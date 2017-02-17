@@ -1,0 +1,51 @@
+{% extends base.html %}
+{% block-content %}
+
+    <div class="container theme-showcase" role="main">
+
+      <!-- Main jumbotron for a primary marketing message or call to action -->
+      <div class="jumbotron" id="header">
+         
+         
+         <div class="input-group">
+          <input type="text" id="input-titol" class="form-control" aria-label="...">
+          <div class="input-group-btn">
+            <button type="button" class="btn btn-default dropdown-toggle drop1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Buscar per... <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+              <li><a href="#">Títol</a></li>
+              <li><a href="#">Grup</a></li>
+              <li><a href="#">Any</a></li>
+              <li><a href="#">Génere</a></li> 
+            </ul>
+          </div>
+        </div>
+         
+      </div>
+      
+      <div id="contingut">
+        <div class="page-header items">
+          
+         {% for disc in llista_discos %}   
+          <div class="row con1">
+            <div class="item">
+             <img src="images/hqdefault.jpg" class="img-responsive hq" id="hq1">
+      
+              <div class="preu" id="preu1">{{ disc.preu }}</div>
+              <div class="item-body">
+                <div class="titol" id="titol1"><a href=""><h6> {{ disc.nom }} </h6></a></div>
+                <div class="user">
+                  <div class="img-user"><a href=""><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></div>
+                  <div class="name-user"><a href=""><small>{{ user.name }} </small></a></div>
+                </div>
+              </div>
+              <button type="button" class="btn btn-success button1">Contactar</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+ {% endblock %}
+     
+
