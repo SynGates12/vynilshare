@@ -21,6 +21,31 @@ def vinil_informacio(request,id_Oferta_disc):
 def contacte(request):
     return redirect("discos:contacte")
     
+def afegir_modificar_disc(request,oferta_disc_id=None):
+    return redirect("discos:afegir_disc")
+
+#
+#def afegir_modificar_disc(request, oferta_disc_id=None):
+#    SupplyForm = modelform_factory(Suppliers, exclude=())
+#    unaSupplier= Suppliers()
+#    if id_supplier:
+#        unaSupplier = get_object_or_404(Suppliers, pk=id_supplier)
+#    if request.method == 'POST':
+#        form = SupplyForm(request.POST, instance = unaSupplier)
+#        if form.is_valid():
+#            form.save()
+#            messages.info(request, "Molt be, s'ha afegit correctament.")
+#            return redirect('taulell:List_Supplier')
+#    else:
+#        form = SupplyForm(instance = unaSupplier)
+#    for f in form.fields:
+#        form.fields[f].widget.attrs['class'] = 'form-control'
+#    return render(request, 'afegir_modificar_Supplier.html',
+#                  {'form': form,
+#                   'capcelera': "Manteniment de Caselles"} )
+#
+
+
 
 def cercador (request):
     #si és un POST

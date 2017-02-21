@@ -4,7 +4,7 @@
  
 {% block extra-head %} 
   {% load static %}
-    
+    <script src="{% static "js/index.js" %}"></script>
     <script src="{% static "js/Usuari.js" %}"></script>
 {% endblock %}
 
@@ -46,7 +46,7 @@
           <div class="panel-heading">Menú</div>
           <!-- List group -->
             <div class="list-group">
-              <a href='{% url "usuaris:modificar_perfil" %}' class="list-group-item"><span class="glyphicon glyphicon-cog"></span> Modificar dades</a>
+              <a href='{% url "usuaris:modificar_perfil" %}' class="list-group-item">Modificar les meves dades</a>
               <a href="#" class="list-group-item">Cras just odio</a>
               <a href="#" class="list-group-item">Morbi leo risus</a>
               <a href="#" class="list-group-item">Porta ac consectetur ac</a>
@@ -71,7 +71,7 @@
                   
                   <div class="item item-usr">
                     <img src="images/hqdefault.jpg" class="img-responsive hq" id="hq1">
-                    <div class="remove clicat"><span class="glyphicon glyphicon-remove" title="Esborrar disc" data-toggle="modal" data-target="#myModalB"></span></div>
+                    <div data-toggle="modal" data-target="#myModalB" class="remove clicat"><span class="glyphicon glyphicon-remove" title="Esborrar disc"></span></div>
                     <div class="preu" id="preu1">25 €</div>
                     <div class="item-body">
                       <div class="titol" id="titol1"><a href=""><h6>Dark Side Of The Moon</h6></a></div>
@@ -88,7 +88,7 @@
             
              
              <!-- Modal venut-->
-             <div id="myModal" class="modal fade" role="dialog">
+             <div id="myModal" class="modal fade" role="dialog" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
                 <div class="modal-dialog">
 
                     <!-- Modal content-->
@@ -104,7 +104,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">No, no l'he venut</button>
-                            <button type="button" class="okReservar btn btn-success" data-dismiss="modal">Sí, he venut aquest disc</button>
+                            <button id="YES" type="button" class="okReservar btn btn-success" data-dismiss="modal">Sí, he venut aquest disc</button>
                         </div>
                     </div>
 
@@ -113,7 +113,7 @@
             </div>
             
             <!-- Modal borrar-->
-            <div id="myModalB" class="modal fade" role="dialog">
+            <div id="myModalB" class="modal fade" role="dialog" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
                 <div class="modal-dialog">
 
                     <!-- Modal content-->

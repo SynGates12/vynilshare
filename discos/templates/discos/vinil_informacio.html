@@ -1,10 +1,12 @@
-{% extends base.html %}
-{% block-content %}
+{% extends "base.html" %}
+{% block extra-head %} 
+  {% load static %}
+    <script src="{% static "js/vinilInfo.js" %}"></script>
+{% endblock %}
+{% block content %}
+<div>
+    <span>HHHOOOOLLLLLLAAA</span>
+</div>
 
-{{ vinil.titol}}
-{{ vinil.descripcio}}
-{{vinil.preu}}
-
-{{vinil.usuari_venedor}}
 
 {% endblock %}

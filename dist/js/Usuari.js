@@ -12,9 +12,13 @@ $(document).ready(function(){
             });
         });
     });
+        $('.prova').click(function() {
+        proba=$(this).closest(".item"); 
+        $('#YES').click(function(){
+            $(proba).remove();
+        })
+    });
 });
 
-
-alert("YEAH");
 
 
