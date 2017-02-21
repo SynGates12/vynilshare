@@ -90,6 +90,10 @@ DATABASES = {
 }
 
 
+MEDIA_ROOT=os.path.join(BASE_DIR,'uploads')
+MEDIA_URL="/fitxers_pujats/"
+
+
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
 
@@ -138,6 +142,8 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "dist"),
  
     ]
+
+STATIC_ROOT="/tmp/tots_els_fitxers_estics"
 
 AUTHENTICATION_BACKENDS=(
     #Facebook

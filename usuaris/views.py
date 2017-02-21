@@ -49,7 +49,7 @@ def modificar_perfil(request ):
     unUsuari = request.user
     if request.method == 'POST':
         formUsuari = usuariForm(request.POST, instance = unUsuari)
-        formPerfil = profileForm(request.POST, instance = unPerfil)
+        formPerfil = profileForm(request.POST, request.FILES, instance = unPerfil)
         formUsuariValid = formUsuari.is_valid()
         formPerfilValid = formPerfil.is_valid()
         if formUsuariValid and formPerfilValid:
@@ -74,6 +74,8 @@ def menu_usuari(request):
     discos = request.user.perfil.discos_oferta.all()
     ctx={"discos":discos}        
     return render(request,"menu_usuari.html",ctx)
+    
+ 
 
 def login(request):
 

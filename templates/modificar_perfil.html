@@ -41,7 +41,7 @@
           
           <div id="content-login">
             
-                <form id="cont-log" action="" method="POST">
+                <form id="cont-log" action="" method="POST" enctype="media/form-data">
                     {%csrf_token%}
                 {% for field in formUsuari.visible_fields %}
 
