@@ -5,18 +5,25 @@ body{
     background-size:auto;
 }
 
-
 .esquerra{
     display:flex;
     flex-direction:column;
     margin:auto;
-    margin-top:-36px;
 }
 
 .infor{
     display:flex;
-    flex-direction: column;
+    flex-direction: row;
     flex-wrap:wrap;
+    justify-content:center;
+    width:70%;
+    margin:auto;
+    margin-top:50px;
+    align-items:center;
+    background:rgba(255,255,255,0.9);
+    height:600px;
+    
+    border-radius:4px;
 }
 
 #cont-log{
@@ -37,16 +44,12 @@ body{
 }
 
 #content-login{
-    background:rgba(0,0,0,0.5);
+    /*background:rgba(0,0,0,0.1);*/
     
 }
 
 #crear > a{
      color:white;
-}
-
-.hidden-xs{
-    display:none;
 }
 
 
@@ -87,6 +90,15 @@ body{
     color:white;
 }
 
+#browse{
+    margin:auto;
+    margin-top:10px;
+    padding-bottom: 25px;
+}
+
+#img-user:hover{
+    opacity:0.8;
+}
 
 
 #facebook{
@@ -108,7 +120,7 @@ body{
             border-radius:4px;
             display:flex;
             flex-direction:column;
-            background:rgba(0,0,0,0.5);
+            
         }
          
         #crear{
@@ -142,6 +154,17 @@ body{
             height:400px;
             margin:auto;
         }
+        
+        #img-user{
+            width:400px;
+            height: 400px;
+            background-image: url("/dist/images/usericon.png");
+            background-repeat:no-repeat;
+            background-position: center; 
+            background-size:cover;
+            border-radius:1000px;
+            margin:auto;
+        }
 
 }
 
@@ -167,7 +190,7 @@ body{
             border-radius:4px;
             display:flex;
             flex-direction:column;
-            background:rgba(0,0,0,0.5);
+            
             width:100%;
         }
         
@@ -187,6 +210,17 @@ body{
             background-size: cover;
             width:200px;
             height:200px;
+            margin:auto;
+        }
+        
+         #img-user{
+            width:200px;
+            height:200px;
+            background-image: url("/dist/images/usericon.png");
+            background-repeat:no-repeat;
+            background-position: center; 
+            background-size:cover;
+            border-radius:1000px;
             margin:auto;
         }
 }
