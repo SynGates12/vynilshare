@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block title %} Sign Up! {% endblock %}
+
+{% block extra-head %}
+{% load static %}  
+<link href="{% static "css/SignUp.css" %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+      <div class="infor">
+          <div class="esquerra">
+              <div id="logo" ></div>
+              <div id="social">
+                <div class="social-logo" id="facebook" onclick="window.location = '{% url "social:begin" "facebook-oauth2" %}';"></div>
+                <div class="social-logo" id="twitter" onclick="window.location = '{% url "social:begin" "twitter" %}';"></div>
+                <div class="social-logo" id="google" onclick="window.location = '{% url "social:begin" "google-oauth2" %}';"></div>
+              </div>
+          </div> 
+          
+          <div id="content-login">
+            
+                <form id="cont-log" action="" method="POST">
+                    {%csrf_token%}
+                {% for field in formUsuari.visible_fields %}
+
+	              <div class="form-group">
+                    {{ field.label_tag }}
+      	            {{ field }}
+      	            {% if field.help_text %}
+      	            <p class="hidden-xs"><em>{{ field.help_text }}</em></p>
+      	            {% endif %}
+      		        {% if field.errors %}		        	
+      			        <div class="alert alert-danger">
+      			        <button type="button" class="close" data-dismiss="alert">&times;</button>
+      				        <ul>
+      				          {% for error in field.errors%}
+      				          <li>{{ error }}</li>
+      			              {% endfor %}
+      			            </ul>
+      		         	</div>
+      		        {% endif %}
+      	        </div>        
+               {% endfor %}
+
+               {% for field in formPerfil.visible_fields %}
+
+	              <div class="form-group">
+                    {{ field.label_tag }}
+      	            {{ field }}
+      	            {% if field.help_text %}
+      	            <p class="hidden-xs"><em>{{ field.help_text }}</em></p>
+      	            {% endif %}
+      		        {% if field.errors %}		        	
+      			        <div class="alert alert-danger">
+      			        <button type="button" class="close" data-dismiss="alert">&times;</button>
+      				        <ul>
+      				          {% for error in field.errors%}
+      				          <li>{{ error }}</li>
+      			              {% endfor %}
+      			            </ul>
+      		         	</div>
+      		        {% endif %}
+      	        </div>        
+               {% endfor %}
+
+
+                 
+                
+                  <br><br>
+                 <!-- <div class="g-recaptcha boot" data-sitekey="6Le8-xUUAAAAAEaaToGX4VZV_DPLvLK4C0PJnUQX"></div>-->
+                  <br><br>
+                  <input id="botoncito" type="submit" class="formulari boto btn btn-success" value="CREAR">
+                  
+                  <br />
+                </form> 
+              
+          </div>
+        </div>
+
+{% endblock %}
+
+{% block extra-body %}
+{% load static %}
+<script src="{% static "js/Usuari.js" %}"></script>
+{% endblock %}
+
+

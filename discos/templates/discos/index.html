@@ -1,5 +1,42 @@
-{% extends base.html %}
-{% block-content %}
+{% extends "base.html" %}
+{% block title %} Vinyl Homepage {% endblock %}
+{% block content %}
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Vinylshare</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Inici</a></li>
+            <li><a href="#recomanats">Recomanats</a></li>
+            <li><a href="#ultims">Últims</a></li>
+            <li><a href="{%url "discos:contacte" %}">Contacte</a></li>
+         </ul>
+         
+
+           {% if user.is_authenticated %}
+            <div id="user">
+                  <ul class="nav navbar-nav"> 
+                        <li><a href="{% url "usuaris:menu_usuari" %}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{user}}</a></li></ul></div>
+                  <ul class="nav navbar-nav"> 
+                       <li><a href="{% url "usuaris:logout" %}">Logout</a></li>
+                  </ul> 
+            </div>
+            {% else %}
+                <div id="user"><ul class="nav navbar-nav"> <li><a href="{% url "usuaris:login" %}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Login</a></li></ul></div>
+            {% endif %}
+     
+          </div><!--/.nav-collapse -->
+      </div>
+    </nav>
 
     <div class="container theme-showcase" role="main">
 
@@ -28,23 +65,75 @@
          {% for disc in llista_discos %}   
           <div class="row con1">
             <div class="item">
-             <img src="images/hqdefault.jpg" class="img-responsive hq" id="hq1">
+             <img src="dist/images/hqdefault.jpg" class="img-responsive hq" id="hq1">
       
               <div class="preu" id="preu1">{{ disc.preu }}</div>
               <div class="item-body">
                 <div class="titol" id="titol1"><a href=""><h6> {{ disc.nom }} </h6></a></div>
                 <div class="user">
                   <div class="img-user"><a href=""><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></div>
-                  <div class="name-user"><a href=""><small>{{ user.name }} </small></a></div>
+                  <div class="name-user"><a href=""><small>{{ user.perfil.id}} </small></a></div>
                 </div>
               </div>
               <button type="button" class="btn btn-success button1">Contactar</button>
             </div>
 
           </div>
+          {% endfor %}
         </div>
       </div>
     </div>
+    
+     <!-- Footer -->
+    <nav class="navbar navbar-inverse footer">
+      <div id="concurs">
+        <img src="dist/images/puntcat.png" alt="puntcat" class="img-responsive fooo" id="puntcat">
+        <img src="dist/images/dinahosting.jpg" alt="dinahosting" class="img-responsive fooo" id="dina">
+      </div>
+     
+     <div id="peu">
+       
+       <div id="foot">
+          <dl class="dl-horizontal">
+           <ul class="list-inline">
+             <li><h6>Item</h6></li>
+             <li><h6>Item</h6></li>
+             <li><h6>Item</h6></li>
+             <li><h6>Item</h6></li>
+         </ul>
+         
+          <ul class="list-inline llista">
+             <li><h6><small>Item</small></h6></li>
+             <li><h6><small>Item</small></h6></li>
+             <li><h6><small>Item</small></h6></li>
+            <li><h6><small>Item</small></h6></li>       
+          </ul>
+          </dl>
+        </div>
+        <div id="drets">
+          
+          <img src="dist/images/cc.png" alt="cc" class="img-responsive fooo creative" id="cc">
+          <img src="dist/images/chooser_by.png" alt="Chooser By" class="img-responsive fooo creative" id="by">
+          <img src="dist/images/chooser_nc.png" alt="Chooser Nc" class="img-responsive fooo creative" id="nc">
+          <img src="dist/images/chooser_nd.png" alt="Chooser Nd" class="img-responsive fooo creative" id="nd">
+          
+        </div>
+        
+        
+       
+     </div>
+     
+    
+    </nav>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../dist/assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+    <script src="../../dist/assets/js/docs.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../dist/assets/js/ie10-viewport-bug-workaround.js"></script>
 
  {% endblock %}
      

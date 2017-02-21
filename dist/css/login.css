@@ -1,12 +1,12 @@
 body{
-    background-image:url("images/vinParet.jpg");
+    background-image:url("../images/vinParet.jpg");
     background-repeat:no-repeat;
     background-position: center; 
     background-size:auto;
 }
 
 #logo{
-    background-image:url("images/miniLogo.png");
+    background-image:url("../images/minilogo.png");
     background-repeat:no-repeat;
     background-position: center; 
     background-size: cover;
@@ -31,6 +31,8 @@ body{
 .formulari{
     margin:10px;
     padding:15px;
+    width: 100%;
+    margin: auto;
 }
 
 #content-login{
@@ -71,17 +73,31 @@ body{
     
 }
 
+#id_username, #id_password{
+    width:100%;
+    margin:auto;
+    padding:15px;
+    opacity:0.8;
+}
+
+#id_password:focus{
+    opacity:1;
+}
+
+#id_usernam:focus{
+    opacity:1;
+}
 
 #facebook{
-    background-image:url("images/icon-facebook.png");
+    background-image:url("../images/icon-facebook.png");
 }
 
 #twitter{
-    background-image:url("images/icon-twitter.png");
+    background-image:url("../images/icon-twitter.png");
 }
 
 #google{
-    background-image:url("images/icon-google.png");
+    background-image:url("../images/icon-google.png");
 }
 @media only screen and (min-width:900px){
         /* styles for browsers larger than 900px; */

@@ -23,7 +23,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'l*6^-(v=21)lan6u1r9u!98-#k!l*#r+j#kwxuy62@y-ato81-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+#Per defecte es True. Posat a False perque no se que vol el Facebook
+DEBUG = True 
 
 ALLOWED_HOSTS = []
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
@@ -43,6 +44,7 @@ INSTALLED_APPS = [
     'social_django',
 ]
 
+
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -53,13 +55,13 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 ROOT_URLCONF = 'vinylshare.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates'),],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -67,6 +69,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -128,17 +132,31 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/dist/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "dist"),
+ 
+    ]
 
 AUTHENTICATION_BACKENDS=(
+    #Facebook
+    'social.backends.facebook.FacebookOAuth2',
+    #Google+
     'social_core.backends.google.GoogleOAuth2',
+    #Twitter
     'social_core.backends.twitter.TwitterOAuth',
-        'django.contrib.auth.backends.ModelBackend',
+    
+    'django.contrib.auth.backends.ModelBackend',
    )
     
 SOCIAL_AUTH_URL_NAMESPACE = 'social'
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY= '953722759805-1aej50lgdio8l3sf3makl530tqr0uh2e.apps.googleusercontent.com'
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET='rypUj3GPyyKVli_ZKKcbwRKG'
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY= '962039931134-1gj3q0g9nn1p2tr0499m3gd1ugtvt1he.apps.googleusercontent.com' 
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET= 'UOnuUtJ7AHSsRk7df69q_5wZ' 
 
-SOCIAL_AUTH_TWITTER_KEY = 'uXVSOrKkrldUaiJe7GuDI61J1'
-SOCIAL_AUTH_TWITTER_SECRET = '3KPUyIVsmGHC32P8g4NP6pWVgCViwDA1ytWF5bdfkUcGQAXZuc'
+SOCIAL_AUTH_TWITTER_KEY = 'rew7Vg42T8pwEoOOGaErzFafp'
+SOCIAL_AUTH_TWITTER_SECRET = 'K8Tf55F7WhY1KB3Nf80mXu3s3KcMck86CLmsmUcoQ0atw4S5QF'
+
+#SOCIAL_AUTH_FACEBOOK_KEY = ''
+#SOCIAL_AUTH_FACEBOOK_SECRET = ''
+

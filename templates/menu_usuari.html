@@ -1,39 +1,15 @@
-<!DOCTYPE html>
-<html lang="ca">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="Index page of Vynilshare">
-    <meta name="author" content="Oriol, Maria, Albert">
-    <link rel="icon" href="/images/miniLogo.png">
+{% extends "base.html" %}
+ 
+ {% block title %} El teu menu {% endblock %}
+ 
+{% block extra-head %} 
+  {% load static %}
+    
+    <script src="{% static "js/Usuari.js" %}"></script>
+{% endblock %}
 
-    <title>Pàgina d'usuari</title>
+{% block content  %}
 
-    <!-- Bootstrap core CSS -->
-    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap theme -->
-    <link href="../../dist/css/bootstrap-theme.min.css" rel="stylesheet">
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-    <!-- Custom styles for this template -->
-    <link href="theme.css" rel="stylesheet">
-
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
-    <script src="Usuari.js"></script>
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
-
-  <body>
-      
         <!-- Fixed navbar -->
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
@@ -48,7 +24,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a href="index.html">Inici</a></li>
+            <li><a href='{% url "discos:index" %}'>Inici</a></li>
             <li><a href="#recomanats">Recomanats</a></li>
             <li><a href="#ultims">Últims</a></li>
             <li><a href="#contacte">Contacte</a></li>
@@ -67,13 +43,11 @@
       <div class="col-xs-3">
           <div class="panel panel-default menu-usr">
           <!-- Default panel contents -->
-          <div class="panel-heading">Panel heading</div>
+          <div class="panel-heading">Menú</div>
           <!-- List group -->
             <div class="list-group">
-              <a href="#" class="list-group-item">
-                Cras justo odio
-              </a>
-              <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+              <a href='{% url "usuaris:modificar_perfil" %}' class="list-group-item">Modificar les meves dades</a>
+              <a href="#" class="list-group-item">Cras just odio</a>
               <a href="#" class="list-group-item">Morbi leo risus</a>
               <a href="#" class="list-group-item">Porta ac consectetur ac</a>
               <a href="#" class="list-group-item">Vestibulum at eros</a>
@@ -109,49 +83,7 @@
                     <button class="prova btn btn-success button1" type="submit" value="Submit" data-toggle="modal" data-target="#myModal">Venut</button>
                   </div>
                 
-                <div class="item item-usr">
-                  <img src="images/hqdefault.jpg" class="img-responsive hq" id="hq1">
-                  <div class="remove clicat"><span class="glyphicon glyphicon-remove" title="Esborrar disc" data-toggle="modal" data-target="#myModalB"></span></div>
-                  <div class="preu" id="preu1">23 €</div>
-                  <div class="item-body">
-                    <div class="titol" id="titol1"><a href=""><h6>Dark Side Of The Moon</h6></a></div>
-                    <div class="user">
-                      <div class="img-user"><a href=""><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a></div>
-                      <div class="name-user"><a href=""><small>Editar</small></a></div>
-                    </div>
-                  </div>
-                  <button class="prova btn btn-success button1" type="submit" value="Submit" data-toggle="modal" data-target="#myModal">Venut</button>
-                </div>
-                
-                <div class="item item-usr">
-                  <img src="images/hqdefault.jpg" class="img-responsive hq" id="hq1">
-                  <div class="remove clicat"><span class="glyphicon glyphicon-remove" title="Esborrar disc" data-toggle="modal" data-target="#myModalB"></span></div>
-                  <div class="preu" id="preu1">47 €</div>
-                  <div class="item-body">
-                    <div class="titol" id="titol1"><a href=""><h6>Dark Side Of The Moon</h6></a></div>
-                    <div class="user">
-                      <div class="img-user"><a href=""><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a></div>
-                      <div class="name-user"><a href=""><small>Editar</small></a></div>
-                    </div>
-                  </div>
-                  <button class="prova btn btn-success button1" type="submit" value="Submit" data-toggle="modal" data-target="#myModal">Venut</button>
-                </div>
-                
-                <div class="item item-usr">
-                  <img src="images/hqdefault.jpg" class="img-responsive hq" id="hq1">
-                 <div class="remove clicat"><span class="glyphicon glyphicon-remove" title="Esborrar disc" data-toggle="modal" data-target="#myModalB"></span></div>
-                  <div class="preu" id="preu1">56 €</div>
-                  <div class="item-body">
-                    <div class="titol" id="titol1"><a href=""><h6>Dark Side Of The Moon</h6></a></div>
-                    <div class="user">
-                      <div class="img-user"><a href=""><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a></div>
-                      <div class="name-user"><a href=""><small>Editar</small></a></div>
-                    </div>
-                  </div>
-                  <button class="prova btn btn-success button1" type="submit" value="Submit" data-toggle="modal" data-target="#myModal">Venut</button>
-                </div>
-
-                </div>
+               </div>
             </div>
             
              
@@ -214,22 +146,5 @@
             </div>
 
     </div>
-    
-    
-    
-    
-    
-    
-    
-    
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
-    <script src="../../assets/js/docs.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
-  </body>
-</html>
+
+{% endblock %}

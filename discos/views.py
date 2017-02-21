@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django.shortcuts import render,get_object_or_404,redirect
 from django.http import HttpResponse
 from discos.models import Oferta_disc
@@ -8,7 +9,7 @@ from .forms import SearchForm
 def index(request):
     discos= Oferta_disc.objects.all();
     ctx={'llista_discos': discos}
-    return render(request, "index.html",ctx)
+    return render(request, "discos/index.html",ctx)
     
 
 def vinil_informacio(request,id_Oferta_disc):
@@ -17,7 +18,11 @@ def vinil_informacio(request,id_Oferta_disc):
     return render(request,"discos/vinil_informacio.html",ctx)
     
 
-def recerca (request):
+def contacte(request):
+    return redirect("discos:contacte")
+    
+
+def cercador (request):
     #si és un POST
     if request.method == 'POST':
         form = SearchForm(request.POST)
@@ -38,4 +43,8 @@ def recerca (request):
     else:
         #torna al formulari
         form = SearchForm()
-        return render(request,"discos/cercador.html",ctx)
+    ctx={"discos":discos}    
+    return render(request,"discos/cercador.html",ctx)
+        
+        
+        
