@@ -16,3 +16,5 @@ class Oferta_disc (models.Model):
     usuari_comprador=models.ForeignKey('usuaris.Perfil',on_delete=models.SET_NULL,blank=True, null=True, related_name="discos_comprats")
     venut=models.BooleanField(default=False, editable=False)
     visible = models.BooleanField( default=True, editable=False )
+    
+    image = models.ImageField(upload_to='discos', blank=True)
