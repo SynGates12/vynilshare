@@ -33,11 +33,39 @@
           </div>
         </nav>
         
-      <div class="infor">
-          <div class="esquerra">
-             <div id="img-user"></div>
-             <input type="file" id="browse" name="filename" accept="image/gif, image/jpeg, image/png">
-          </div> 
+        
+       
+     
+      
+        <div class="contingut-usr">
+    
+          <div class="row usr-menu">
+           
+            <div class="col-xs-3">
+                <div class="panel panel-default menu-usr">
+                <!-- Default panel contents -->
+                <div class="panel-heading">Menú</div>
+                <!-- List group -->
+                  <div class="list-group">
+                    <a href='{% url "usuaris:modificar_perfil" %}' class="list-group-item"><span class="glyphicon glyphicon-cog"></span> Modificar dades</a>
+                    <a href="#" class="list-group-item">Cras just odio</a>
+                    <a href="#" class="list-group-item">Morbi leo risus</a>
+                    <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+                    <a href="#" class="list-group-item">Vestibulum at eros</a>
+                  </div>
+              </div>
+              </div>
+              </div>
+              
+              <div class="row add">
+               
+                  
+                
+                   <div class="infor">
+              <div class="esquerra">
+                 <div id="img-user"></div>
+                 <input type="file" id="browse" name="filename" accept="image/gif, image/jpeg, image/png">
+              </div> 
           
           <div id="content-login">
             
@@ -98,6 +126,33 @@
               
           </div>
         </div>
+                    
+                      
+                        
+                        
+                      
+                 
+                </div>
+            
+             
+
+    </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+       
+        
+      
 
 {% endblock %}
 
