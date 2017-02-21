@@ -64,8 +64,13 @@ def modificar_perfil(request ):
        formUsuari.fields[f].widget.attrs['class'] = 'formulari'
     for f in formPerfil.fields:
        formPerfil.fields[f].widget.attrs['class'] = 'formulari'
+       
+       
      
-   
+    formUsuari.fields['first_name'].widget.attrs['placeholder']="Nom"
+    formUsuari.fields['last_name'].widget.attrs['placeholder']="Cognoms"
+    formPerfil.fields['CP'].widget.attrs['placeholder']="Codi postal"
+    formPerfil.fields['localitat'].widget.attrs['placeholder']="Localitat"
     return render(request, 'modificar_perfil.html', {'formPerfil': formPerfil, 
                                                      'formUsuari': formUsuari } )
 

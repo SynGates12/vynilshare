@@ -1,0 +1,30 @@
+body{
+    background-image:url("../images/vinParet.jpg");
+    background-repeat:no-repeat;
+    background-position: center; 
+    background-size:auto;
+}
+
+.infor{
+    display:flex;
+    flex-direction: row;
+    flex-wrap:wrap;
+    justify-content:center;
+    align-items:center;
+    margin:auto;
+    background:rgba(0,0,0,0.5);
+    padding:20px;
+    color:white;
+    
+}
+
+input{
+    color:black;
+}
+
+.formulari{
+    margin:10px;
+    padding:15px;
+    width:100%;
+    margin:auto;
+}
