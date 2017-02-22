@@ -65,6 +65,23 @@ def afegir_disc(request,oferta_disc_id=None):
  
     return render (request, 'discos/afegir_disc.html', {'form': form})    
 
+def editar_disc(request,oferta_disc_id=None):
+    EditForm = modelform_factory(Oferta_disc, fields=('titol', 'grup','anny','genere','estat','descripcio','preu'))
+    unEdit = Oferta_disc()
+    
+    if request.method == 'POST':
+        form = EditForm (request.POST,request.FILES, instance= unEdit)
+        if form.is_valid():
+           form.save()
+           messages.info(request,"canviat correctament disc")
+           return redirect("menu_usuari")    
+    else:
+        form= EditForm (instance = unEdit)
+    for f in form.fields:
+        form.fields[f].widget.attrs['class'] = 'form-group'
+ 
+    return render (request, 'discos/editar_disc.html', {'form': form})    
+    
 def cercador (request):
     #si és un POST
     if request.method == 'POST':
@@ -81,11 +98,12 @@ def cercador (request):
             elif tipus == "GENERE":
                 q_consulta = Q( genere_icontains = text )
                 
-            discos = Oferta_disc.objects.filter( q_consulta )
+        discos = Oferta_disc.objects.filter( q_consulta )   
     #si no és POST        
     else:
         #torna al formulari
         form = SearchForm()
+      
     ctx={"discos":discos}    
     return render(request,"discos/cercador.html",ctx)
         

@@ -358,6 +358,23 @@ body {
   height:35px;
 }
 
+#disc a{
+  text-decoration:none;
+}
+#disc a:hover{
+  transform: scale(1.1, 1.1);
+}
+#disc .mes{
+  display: flex;
+  color: white;
+  justify-content:center;
+  text-align: center;
+  aling-items: center;
+}
+
+#disc p{
+  color: white;
+}
   
 @media only screen and (min-width:900px){
         /* styles for browsers larger than 960px; */

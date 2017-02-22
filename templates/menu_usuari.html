@@ -27,7 +27,7 @@
             <li><a href='{% url "discos:index" %}'>Inici</a></li>
             <li><a href="#recomanats">Recomanats</a></li>
             <li><a href="#ultims">Últims</a></li>
-            <li><a href="#contacte">Contacte</a></li>
+            <li><a href="{%url "discos:contacte" %}">Contacte</a></li>
           </ul>
           
           <div id="user"><ul class="nav navbar-nav"> <li class="active"><a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{user}}</a></li></ul></div>
@@ -63,9 +63,9 @@
     
               <div class="panel panel-default afegir"> 
                   <div id="disc">
-                   <span class="glyphicon glyphicon-plus-sign mes"> </span> 
                     <a href='{% url "discos:afegir_disc" %}'>
-                      <small>Afegir disc</small>
+                      <span class="glyphicon glyphicon-plus-sign mes"> </span>
+                      <p>Afegir disc</p>
                     </a>  
                   </div>
               </div>
@@ -79,7 +79,7 @@
                       <div class="titol" id="titol1"><a href=""><h6>Dark Side Of The Moon</h6></a></div>
                       <div class="user">
                         <div class="img-user"><a href=""><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a></div>
-                        <div class="name-user"><a href=""><small>Editar</small></a></div>
+                        <div class="name-user"><a href="{% url "discos:editar_disc" %}"><small>Editar</small></a></div>
                       </div>
                     </div>
                     <button class="prova btn btn-success button1" type="submit" value="Submit" data-toggle="modal" data-target="#myModal">Venut</button>
