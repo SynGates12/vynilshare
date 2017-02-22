@@ -375,7 +375,31 @@ body {
 #disc p{
   color: white;
 }
-  
+
+#adalt{
+  cursor: pointer;
+  background:#F7E2B3;
+  padding: 10px;
+  border-radius: 4px;
+  color: black;
+  position: fixed;
+  top: 95%;
+  left: 95%;
+  opacity: 0.8;
+}  
+
+#amagals,#ensenyels{
+  cursor: pointer;
+  background:#F7E2B3;
+  padding: 10px;
+  border-radius: 4px;
+  color: black;
+  position: fixed;
+  top: 95%;
+  left: 95%;
+  opacity: 0.8;
+}
+
 @media only screen and (min-width:900px){
         /* styles for browsers larger than 960px; */
        .disc-usr{
