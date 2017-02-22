@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+
+  {% block title %} Afegir disc {% endblock %}
+
+{% block extra-head %}
+  {% load static %}
+    <script src="{% static "js/afegir_disc.js" %}"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="contingut-disc">
+      <div id="titol-puja"><h3>Pujar Disc</h3></div>
+    
+        
+        <div id="columna-disc">
+          <form id="puja-disc">
+            <div class="form-group">
+              <label for="titol">Titol</label>
+              <input type="text" class="form-control" id="titol" placeholder="Titol">
+            </div>
+            <div class="form-group">
+              <label for="grup">Grup</label>
+              <input type="text" class="form-control" id="grup" placeholder="Grup">
+            </div>
+            <div class="form-group">
+              <label for="anny">Any</label>
+              <input type="text" class="form-control" id="any" placeholder="Any">
+            </div>
+            <div class="form-group">
+              <label for="anny">Preu</label>
+              <input type="text" class="form-control" id="preu" placeholder="preu">
+            </div>
+            <div class="form-group">
+                <label for="genere">Génere Musical</label>
+                <select class="selectpicker form-control gen" id="genere">
+                
+                  <option>Rock</option>
+                  <option>Progessive</option>
+                  <option>Alt Rock</option>
+                  <option>Hard Rock</option>
+                  <option>Blues</option>
+                  <option>Heavy Metal</option>
+                  <option>Disco</option>
+                  <option>Hip-Hop</option>
+                  <option>Folk</option>
+                  <option>Indie</option>
+                  <option>Funk</option>
+                  <option>Clàssica</option>
+                  <option>World Music</option>
+                  <option>House</option>
+                  <option>Altres</option>
+                
+              </select>
+          </div>
+          
+          <div class="form-group">
+              <label for="estat">Estat del disc</label>
+              <select class="selectpicker form-control status" id="estat">
+                  <option>Nou</option>
+                  <option>Semi-nou</option>
+                  <option>Segona mà</option>
+              </select>
+          </div>
+              
+           <div class="form-group">
+            <label for="comment">Comment:</label>
+            <textarea class="form-control" rows="5" id="comment"></textarea>
+          </div>
+  
+           
+          </form>
+          
+          <div id="pujar">
+              <img id="output" class="img-responsive img-rounded "/>
+              <input type="file" accept="image/*" onchange="loadFile(event)" multiple>
+              
+              
+              <div class="checkbox">
+                <label><input type="checkbox" value="">Estic disposat a negociar</label>
+              </div>
+              <div class="checkbox">
+                <label><input type="checkbox" value="">Estic disposat a fer enviaments</label>
+              </div>
+              <div class="checkbox">
+                <label><input type="checkbox" value="">Estic disposat a intercanviar vinils</label>
+              </div>
+              
+              <div id="botons-disc">
+                <button type="submit" class="btn btn-success envia">Enviar</button>
+                
+                <form action="user.html">
+                <button class="btn btn-danger">Cancel·lar</button>
+                </form>
+              </div>
+          </div>
+        </div>  
+
+    
+    
+    </div>
+        
+{% endblock %}
