@@ -36,6 +36,12 @@ def contacte(request):
     for f in form.fields:
        form.fields[f].widget.attrs['class'] = 'formulari'
    
+    form.fields['nom'].widget.attrs['placeholder']="Nom"
+    form.fields['email'].widget.attrs['placeholder']="Email"
+    form.fields['missatge'].widget.attrs['placeholder']="Missatge"
+    form.fields['nom'].widget.attrs['required']="required"
+    form.fields['email'].widget.attrs['required']="required"
+    form.fields['missatge'].widget.attrs['required']="required"
     return render (request, 'discos/contacte.html', {'form': form})
 
     

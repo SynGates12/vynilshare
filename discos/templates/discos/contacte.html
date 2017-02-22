@@ -1,6 +1,11 @@
 {% extends "base.html" %}
   {% block title %} Contact Us {% endblock %}
   
+  {% block extra-head %}
+  {% load static %}  
+  <link href="{% static "css/contacte.css" %}" rel="stylesheet">
+  {% endblock %}
+  
 {% block content %}
     <!-- Fixed navbar -->
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -21,9 +26,26 @@
             <li><a href="#ultims">Últims</a></li>
             <li class="active"><a href="#" >Contacte</a></li>
           </ul>
+        
+           {% if user.is_authenticated %}
+            <div id="user">
+                  <ul class="nav navbar-nav"> 
+                        <li><a href="{% url "usuaris:menu_usuari" %}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{user}}</a></li></ul></div>
+                  <ul class="nav navbar-nav"> 
+                       <li><a href="{% url "usuaris:logout" %}">Logout</a></li>
+                  </ul> 
+            </div>
+            {% else %}
+                <div id="user"><ul class="nav navbar-nav"> <li><a href="{% url "usuaris:login" %}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Login</a></li></ul></div>
+            {% endif %}
+     
+          </div><!--/.nav-collapse -->
         </div>
     </nav>
+    <div id="miss"></div>
+    
     <div id="content-login">
+      <h1>Envia'ns un missatge</h1>
         <form id="cont-log" method="post" action="">
             {% for field in form.visible_fields %}
                   {% csrf_token %}
@@ -42,7 +64,7 @@
       		        {% endif %}
       	        </div>        
              {% endfor %}
-          <button type="submit" class="btn btn-success envia">Enviar</button>
+          <input type="submit" class="formulari boto btn btn-success" value="Entra">
         </form>
     </div>
 {% endblock %}
