@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
 from django.db import models
@@ -11,6 +12,14 @@ class Oferta_disc (models.Model):
     anny=models.DateField()
     genere=models.CharField(max_length=50,)
     preu=models.IntegerField()
+    
+   # ESTAT_CHOICES=(
+#                    ('NOU', 'nou'),
+#                    ('SEMI-NOU', 'semi-nou'),
+#                    ('SEGONA-MÀ','segona mà')
+#    )         
+
+#    estat = models.CharField( max_length=20, choices= ESTAT_CHOICES)
     data_pujada=models.DateField()
     usuari_venedor=models.ForeignKey('usuaris.Perfil',on_delete=models.SET_NULL,blank=True, null=True,related_name="discos_oferta")
     usuari_comprador=models.ForeignKey('usuaris.Perfil',on_delete=models.SET_NULL,blank=True, null=True, related_name="discos_comprats")
