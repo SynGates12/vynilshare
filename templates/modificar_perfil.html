@@ -48,7 +48,7 @@
                 <div class="panel-heading">Menú</div>
                 <!-- List group -->
                   <div class="list-group">
-                    <a href='{% url "usuaris:modificar_perfil" %}' class="list-group-item"><span class="glyphicon glyphicon-cog"></span> Modificar dades</a>
+                    <a href="{% url "usuaris:menu_usuari" %}" class="list-group-item"><span class="glyphicon glyphicon-user"></span> Menú</a>
                     <a href="#" class="list-group-item">Cras just odio</a>
                     <a href="#" class="list-group-item">Morbi leo risus</a>
                     <a href="#" class="list-group-item">Porta ac consectetur ac</a>
@@ -65,7 +65,7 @@
                    <div class="infor">
               <div class="esquerra">
                  <div id="img-user"></div>
-                 <input type="file" id="browse" name="filename" accept="image/gif, image/jpeg, image/png">
+                 <input type="file" id="browse" name="filename" accept="image/gif, image/jpeg, image/png, image/jpg">
               </div> 
           
           <div id="content-login">
@@ -120,7 +120,7 @@
                   <br><br>
                  <!-- <div class="g-recaptcha boot" data-sitekey="6Le8-xUUAAAAAEaaToGX4VZV_DPLvLK4C0PJnUQX"></div>-->
                   <br><br>
-                  <input id="botoncito" type="submit" class="formulari boto btn btn-success" value="Modificar">
+                  <button id="botoncito" type="submit" class="formulari boto btn btn-success"><span class=" glyphicon glyphicon-floppy-disk"></span> Guardar canvis</button>
                   
                   <br />
                 </form> 

@@ -2,8 +2,10 @@
 from django.shortcuts import render,get_object_or_404,redirect
 from django.http import HttpResponse
 from discos.models import Oferta_disc
+from django.forms import modelform_factory
 from django.db.models import Q
-from .forms import SearchForm
+from .forms import SearchForm, ContacteForm
+from django.contrib import messages
 # Create your views here.
 
 def index(request):
@@ -12,40 +14,50 @@ def index(request):
     return render(request, "discos/index.html",ctx)
     
 
-def vinil_informacio(request,id_Oferta_disc):
-    vinil = get_object_or_404(Oferta_disc,pk=id_Oferta_disc)
+def vinil_informacio(request,oferta_disc_id):
+    vinil = get_object_or_404(Oferta_disc,pk=oferta_disc_id)
     ctx={'vinil': vinil}
     return render(request,"discos/vinil_informacio.html",ctx)
     
 
 def contacte(request):
-    return redirect("discos:contacte")
     
-def afegir_modificar_disc(request,oferta_disc_id=None):
-    return redirect("discos:afegir_disc")
+    if request.method =="POST":
+        form=ContacteForm(request.POST)
+        if form.is_valid():
+            nom= form.cleaned_data['nom']
+            email = form.cleaned_date['email']
+            missatge=form.cleaned_data['missatge']
+        return redirect ('discos:index')
+            
+    else:
+        form = ContacteForm()
+    
+    for f in form.fields:
+       form.fields[f].widget.attrs['class'] = 'formulari'
+   
+    return render (request, 'discos/contacte.html', {'form': form})
 
-#
-#def afegir_modificar_disc(request, oferta_disc_id=None):
-#    SupplyForm = modelform_factory(Suppliers, exclude=())
-#    unaSupplier= Suppliers()
-#    if id_supplier:
-#        unaSupplier = get_object_or_404(Suppliers, pk=id_supplier)
-#    if request.method == 'POST':
-#        form = SupplyForm(request.POST, instance = unaSupplier)
-#        if form.is_valid():
-#            form.save()
-#            messages.info(request, "Molt be, s'ha afegit correctament.")
-#            return redirect('taulell:List_Supplier')
-#    else:
-#        form = SupplyForm(instance = unaSupplier)
-#    for f in form.fields:
-#        form.fields[f].widget.attrs['class'] = 'form-control'
-#    return render(request, 'afegir_modificar_Supplier.html',
-#                  {'form': form,
-#                   'capcelera': "Manteniment de Caselles"} )
-#
-
-
+    
+    
+def afegir_disc(request,oferta_disc_id=None):
+    DiscForm = modelform_factory(Oferta_disc, fields=('titol', 'grup','anny','genere'))
+    unOferta = Oferta_disc()
+    
+    if request.method == 'POST':
+        form = DiscForm (request.POST,request.FILES, instance= unOferta)
+        if form.is_valid():
+           form.save()
+           messages.info(request,"pujat correctament disc")
+           return redirect("discos:llista")    
+    else:
+        form= DiscForm (instance = unOferta)
+    for f in form.fields:
+        form.fields[f].widget.attrs['class'] = 'form-group'
+        
+        form.fields['genere'].widget.attrs['placeholder']="Email"
+ 
+    return render (request, 'discos/afegir_disc.html', {'form': form})    
 
 def cercador (request):
     #si és un POST

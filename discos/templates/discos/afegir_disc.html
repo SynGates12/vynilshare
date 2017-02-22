@@ -1,8 +1,10 @@
 {% extends "base.html" %}
+
   {% block title %} Afegir disc {% endblock %}
+
 {% block extra-head %}
   {% load static %}
-    <script src="{% url "js/afegir_disc.js" %}"></script>
+    <script src="{% static "js/afegir_disc.js" %}"></script>
 {% endblock %}
 
 {% block content %}
@@ -14,11 +16,19 @@
           <form id="puja-disc">
             <div class="form-group">
               <label for="titol">Titol</label>
-              <input type="email" class="form-control" id="titol" placeholder="Titol">
+              <input type="text" class="form-control" id="titol" placeholder="Titol">
             </div>
             <div class="form-group">
               <label for="grup">Grup</label>
-              <input type="password" class="form-control" id="grup" placeholder="Grup">
+              <input type="text" class="form-control" id="grup" placeholder="Grup">
+            </div>
+            <div class="form-group">
+              <label for="anny">Any</label>
+              <input type="text" class="form-control" id="any" placeholder="Any">
+            </div>
+            <div class="form-group">
+              <label for="anny">Preu</label>
+              <input type="text" class="form-control" id="preu" placeholder="preu">
             </div>
             <div class="form-group">
                 <label for="genere">Génere Musical</label>

@@ -1,5 +1,6 @@
 {% extends "base.html" %}
-{% block title %} Contact Us {% endblock %}
+  {% block title %} Contact Us {% endblock %}
+  
 {% block content %}
     <!-- Fixed navbar -->
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -15,7 +16,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a href="{%url"discos:index"%}">Inici</a></li>
+            <li><a href="{% url "discos:index" %}">Inici</a></li>
             <li><a href="#recomanats">Recomanats</a></li>
             <li><a href="#ultims">Últims</a></li>
             <li class="active"><a href="#" >Contacte</a></li>
@@ -23,10 +24,25 @@
         </div>
     </nav>
     <div id="content-login">
-        <form id="cont-log">
-            <input type="text" class="formulari" name="firstname" placeholder="Nom"><br><br>
-            <input type="email" class="formulari" name="Email" placeholder="Email"><br><br>
-            <textarea rows="4" cols="50" placeholder="Missatge"></textarea>
+        <form id="cont-log" method="post" action="">
+            {% for field in form.visible_fields %}
+                  {% csrf_token %}
+	              <div class="form-group">
+                    {{ field }}
+                    
+       		        {% if field.errors %}		        	
+      			        <div class="alert alert-danger">
+      			        <button type="button" class="close" data-dismiss="alert">&times;</button>
+      				        <ul>
+      				          {% for error in field.errors%}
+      				          <li>{{ error }}</li>
+      			              {% endfor %}
+      			            </ul>
+      		         	</div>
+      		        {% endif %}
+      	        </div>        
+             {% endfor %}
+          <button type="submit" class="btn btn-success envia">Enviar</button>
         </form>
     </div>
-    {% endblock %}
+{% endblock %}
