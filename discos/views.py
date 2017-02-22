@@ -19,6 +19,12 @@ def vinil_informacio(request,oferta_disc_id):
     ctx={'vinil': vinil}
     return render(request,"discos/vinil_informacio.html",ctx)
     
+def discos_venuts(request):
+    discos= Oferta_disc.objects.all();
+    ctx={'llista_discos': discos}
+        
+    return render (request, "discos_venuts.html", ctx)
+    
 
 def contacte(request):
     

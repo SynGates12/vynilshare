@@ -1,5 +1,11 @@
 {% extends "base.html" %}
 {% block title %} Vinyl Homepage {% endblock %}
+
+{% block extra-head %}
+{% load static %}  
+<script src="{% static "js/index.js" %}"></script>
+{% endblock %}
+
 {% block content %}
     <!-- Fixed navbar -->
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -92,7 +98,9 @@
         <img src="dist/images/puntcat.png" alt="puntcat" class="img-responsive fooo" id="puntcat">
         <img src="dist/images/dinahosting.jpg" alt="dinahosting" class="img-responsive fooo" id="dina">
       </div>
-     
+     <div id="adalt">
+         <span class="glyphicon glyphicon-menu-up" title="amunt" aria-hidden="true"></span>
+     </div>
      <div id="peu">
        
        <div id="foot">
