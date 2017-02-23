@@ -20,10 +20,11 @@ def vinil_informacio(request,oferta_disc_id):
     return render(request,"discos/vinil_informacio.html",ctx)
     
 def discos_venuts(request):
-    discos= Oferta_disc.objects.all();
-    ctx={'llista_discos': discos}
+    venuts= request.user.perfil.discos_oferta.filter(venut=True)
+   
+    ctx={'venuts': venuts}
         
-    return render (request, "discos_venuts.html", ctx)
+    return render (request, "discos/discos_venuts.html", ctx)
     
 
 def contacte(request):
@@ -69,8 +70,13 @@ def afegir_disc(request,oferta_disc_id=None):
            return redirect("menu_usuari")    
     else:
         form= DiscForm ()
+   
     for f in form.fields:
-        form.fields[f].widget.attrs['class'] = 'form-group'
+        form.fields[f].widget.attrs['class'] = 'form-control'
+        form.fields['titol'].widget.attrs['placeholder']="Titol"
+        form.fields['grup'].widget.attrs['placeholder']="Grup"
+        form.fields['anny'].widget.attrs['placeholder']="Any"
+        form.fields['preu'].widget.attrs['placeholder']="Preu"
     return render (request, 'discos/afegir_disc.html', {'form': form})    
 
 def editar_disc(request,oferta_disc_id=None):

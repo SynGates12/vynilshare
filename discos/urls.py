@@ -10,5 +10,5 @@ urlpatterns = [
     url(r'^cercador/$', views.cercador, name="cercador"),
     url(r'^afegir_disc/$', views.afegir_disc, name="afegir_disc"),
     url(r'^editar_disc/$', views.editar_disc, name="editar_disc"),
-    url(r'^discos/', views.discos_venuts,name="discos_venuts")
+    url(r'^discos/$', views.discos_venuts,name="discos_venuts")
 ]
