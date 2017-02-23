@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% block title %} Vinyl Search {% endblock %}
+
+{% block extra-head %}
+{% load static %}  
+<script src="{% static "js/index.js" %}"></script>
+<script src="../../dist/assets/js/ie-emulation-modes-warning.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.5.4/bootstrap-select.js"></script>
+<script src='https://www.google.com/recaptcha/api.js'></script>
+<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+{% endblock %}
+
+{% block content %}
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="{% url "discos:index" %}">Vinylshare</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="{% url "discos:index" %}">Inici</a></li>
+            <li><a href="#recomanats">Recomanats</a></li>
+            <li><a href="#ultims">Últims</a></li>
+            <li><a href="{%url "discos:contacte" %}">Contacte</a></li>
+         </ul>
+         
+
+           {% if user.is_authenticated %}
+            <div id="user">
+                  <ul class="nav navbar-nav"> 
+                        <li><a href="{% url "usuaris:menu_usuari"%}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{user}}</a></li></ul>
+                    <ul class="nav navbar-nav"> 
+                       <li><a href="{% url "usuaris:logout" %}"><span title="Logout" class="glyphicon glyphicon-off" aria-hidden="true"></span></a></li>
+                  </ul>     
+            </div>
+                  
+            </div>
+            {% else %}
+                <div id="user"><ul class="nav navbar-nav"> <li><a href="{% url "usuaris:login" %}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Login</a></li></ul></div>
+            {% endif %}
+     
+          </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+    
+    <div class="container theme-showcase" role="main">
+        
+        <div id="contingut">
+        <div class="page-header items">
+          
+         {% for disc in llista_discos %}
+         <div class="item">
+
+             <img src="dist/images/hqdefault.jpg" class="img-responsive hq" id="hq1">
+               
+              <div class="preu" id="preu1">{{ disc.preu }} € </div>
+              <div class="item-body">
+                <div class="titol" id="titol1"><a href=""><h6> {{ disc.titol }} </h6></a></div>
+                <div class="user">
+                  <div class="img-user"><a href=""><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></div>
+                  <div class="name-user"><a href=""><small>{{user}} </small></a></div>
+                </div>
+              </div>
+              <button type="button" class="btn btn-success button1">Contactar</button>
+            </div>
+          {% endfor %}  
+          </div>
+          
+        </div>
+        
+        
+    </div>
