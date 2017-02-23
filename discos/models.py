@@ -20,4 +20,4 @@ class Oferta_disc (models.Model):
     venut=models.BooleanField(default=False, editable=False)
     visible = models.BooleanField( default=True, editable=False )
     
-    image = models.ImageField(upload_to='discos', blank=True)
+    image = models.ImageField(upload_to='uploads', blank=True)

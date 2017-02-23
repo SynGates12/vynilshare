@@ -22,7 +22,7 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="#">Inici</a></li>
-            <li><a href="{%url "discos:recomenats" %}">Recomanats</a></li>
+            <li><a href="#recomanats">Recomanats</a></li>
             <li><a href="#ultims">Últims</a></li>
             <li><a href="{%url "discos:contacte" %}">Contacte</a></li>
          </ul>
@@ -49,39 +49,12 @@
     <div class="container theme-showcase" role="main">
 
       <!-- Main jumbotron for a primary marketing message or call to action -->
-      <div class="jumbotron" id="header">
-         
-         
-         <div class="input-group">
-          <input type="text" id="input-titol" class="form-control" aria-label="...">
-          <div class="input-group-btn">
-            <button type="button" class="btn btn-default dropdown-toggle drop1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Buscar per... <span class="caret"></span></button>
-            <ul class="dropdown-menu">
-              <li><a href="#">Títol</a></li>
-              <li><a href="#">Grup</a></li>
-              <li><a href="#">Any</a></li>
-              <li><a href="#">Génere</a></li> 
-            </ul>
-          </div>
-        </div>
-         
-      </div>
       
       <div id="contingut">
-        <div class="page-header items">
           
-             
-          
-                         
-                                     
-                      	     
-                           
-
-         
-         
-         {% for disc in llista_discos %}
+         {% for disc in recomana_discos %}
          <div class="item">
-             <img src="dist/images/hqdefault.jpg" class="img-responsive hq" id="hq1">
+             <img src="dist/images/cc.png" class="img-responsive hq" id="hq1">
       
               <div class="preu" id="preu1">{{ disc.preu }} € </div>
               <div class="item-body">
