@@ -4,6 +4,13 @@
 {% block extra-head %}
 {% load static %}  
 <script src="{% static "js/index.js" %}"></script>
+<script src="../../dist/assets/js/ie-emulation-modes-warning.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.5.4/bootstrap-select.js"></script>
+<script src='https://www.google.com/recaptcha/api.js'></script>
+<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 {% endblock %}
 
 {% block content %}
@@ -59,7 +66,6 @@
             <ul class="dropdown-menu">
               <li><a href="#">Títol</a></li>
               <li><a href="#">Grup</a></li>
-              <li><a href="#">Any</a></li>
               <li><a href="#">Génere</a></li> 
             </ul>
           </div>
