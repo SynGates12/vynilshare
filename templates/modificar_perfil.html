@@ -25,7 +25,7 @@
                 <li><a href='{% url "discos:index" %}'>Inici</a></li>
                 <li><a href="#recomanats">Recomanats</a></li>
                 <li><a href="#ultims">Últims</a></li>
-                <li><a href="#contacte">Contacte</a></li>
+                <li><a href="{%url "discos:contacte" %}">Contacte</a></li>
               </ul>
               
              <div id="user">
@@ -55,10 +55,7 @@
                 <!-- List group -->
                   <div class="list-group">
                     <a href="{% url "usuaris:menu_usuari" %}" class="list-group-item"><span class="glyphicon glyphicon-user"></span> Menú</a>
-                    <a href="#" class="list-group-item">Cras just odio</a>
-                    <a href="#" class="list-group-item">Morbi leo risus</a>
-                    <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-                    <a href="#" class="list-group-item">Vestibulum at eros</a>
+                    <a href='{% url "discos:discos_venuts" %}' class="list-group-item"><span class="glyphicon glyphicon-cd"></span> Discos Venuts</a>
                   </div>
               </div>
               </div>

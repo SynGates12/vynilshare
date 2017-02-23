@@ -60,10 +60,8 @@
                 <!-- List group -->
                   <div class="list-group">
                     <a href="{% url "usuaris:menu_usuari" %}" class="list-group-item"><span class="glyphicon glyphicon-user"></span> Menú</a>
-                    <a href="#" class="list-group-item">Cras just odio</a>
-                    <a href="#" class="list-group-item">Morbi leo risus</a>
-                    <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-                    <a href="#" class="list-group-item">Vestibulum at eros</a>
+                    <a href='{% url "usuaris:modificar_perfil" %}' class="list-group-item"><span class="glyphicon glyphicon-cog"></span> Modificar Dades</a>
+                    <a href='{% url "discos:discos_venuts" %}' class="list-group-item"><span class="glyphicon glyphicon-cd"></span> Discos Venuts</a>
                   </div>
               </div>
               </div>
@@ -75,6 +73,7 @@
                   
                       
                       <div id="columna-disc">
+<<<<<<< HEAD
                         <form id="puja-disc" method ="post" action="" enctype = "multipart/form-data">
                          {% for field in form.visible_fields %}
                                      {% csrf_token %}
@@ -84,14 +83,59 @@
                                 </div>
                            {% endfor %}  
                           
+=======
+                        <form id="puja-disc">
+                          <div class="form-group">
+                            
+                            <input type="text" class="form-control" id="titol" placeholder="Titol" required>
+                          </div>
+                          <div class="form-group">
+                            
+                            <input type="text" class="form-control" id="grup" placeholder="Grup">
+                          </div>
+                          <div class="form-group">
+                            
+                            <input type="text" class="form-control" id="any" placeholder="Any">
+                          </div>
+                          <div class="form-group">
+                            
+                            <input type="text" class="form-control" id="preu" placeholder="Preu" required>
+                          </div>
+                          <div class="form-group">
+                              <label for="genere">Génere Musical</label>
+                              <select class="selectpicker form-control gen" id="genere">
+                              
+                                <option>Rock</option>
+                                <option>Progessive</option>
+                                <option>Alt Rock</option>
+                                <option>Hard Rock</option>
+                                <option>Blues</option>
+                                <option>Heavy Metal</option>
+                                <option>Disco</option>
+                                <option>Hip-Hop</option>
+                                <option>Folk</option>
+                                <option>Indie</option>
+                                <option>Funk</option>
+                                <option>Clàssica</option>
+                                <option>World Music</option>
+                                <option>House</option>
+                                <option>Altres</option>
+                              
+                            </select>
+                        </div>
+>>>>>>> 9d3d108e9918fdd553c8f16431b66107bf73dd82
                         
                 
                          
+<<<<<<< HEAD
                        
+=======
+                        
+>>>>>>> 9d3d108e9918fdd553c8f16431b66107bf73dd82
                         
                         <div id="pujar">
-                            <img id="output" class="img-responsive img-rounded "/>
-                            <input type="file" accept="image/*" onchange="loadFile(event)" multiple>
+                            <img id="output" class="img-responsive img-rounded " />
+                            <input type="file" accept="image/*" onchange="loadFile(event)" multiple required>
                             
                             
                             <div class="checkbox">
@@ -106,13 +150,17 @@
                             
                             <div id="botons-disc">
                               <button type="submit" class="btn btn-success envia">Enviar</button>
+<<<<<<< HEAD
                         </form>
                         
                               <form action="/menu_usuari.html" method ="post">
                               <button class="btn btn-danger">Cancel·lar</button>
                               </form>
+=======
+>>>>>>> 9d3d108e9918fdd553c8f16431b66107bf73dd82
                             </div>
                         </div>
+                        </form>
                       </div>  
               
                   
