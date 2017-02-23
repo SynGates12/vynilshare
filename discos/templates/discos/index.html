@@ -70,24 +70,16 @@
       <div id="contingut">
         <div class="page-header items">
           
-             <div class="item">
-          
-                         
-                                     
-                      	     
-                           
-
-         
-         
          {% for disc in llista_discos %}
+             <div class="item">
              <img src="dist/images/hqdefault.jpg" class="img-responsive hq" id="hq1">
-      
+               
               <div class="preu" id="preu1">{{ disc.preu }} € </div>
               <div class="item-body">
                 <div class="titol" id="titol1"><a href=""><h6> {{ disc.titol }} </h6></a></div>
                 <div class="user">
                   <div class="img-user"><a href=""><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></div>
-                  <div class="name-user"><a href=""><small>{{username}} </small></a></div>
+                  <div class="name-user"><a href=""><small>{{user}} </small></a></div>
                 </div>
               </div>
               <button type="button" class="btn btn-success button1">Contactar</button>
