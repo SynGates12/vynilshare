@@ -77,6 +77,7 @@ def modificar_perfil(request ):
 
 def menu_usuari(request):
     discos = request.user.perfil.discos_oferta.all()
+#    venuts = request.user.perfil.discos_oferta.filter(venut=True)
     ctx={"discos":discos}        
     return render(request,"menu_usuari.html",ctx)
     

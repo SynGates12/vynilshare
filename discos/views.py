@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from discos.models import Oferta_disc
 from django.forms import modelform_factory
 from django.db.models import Q
-from .forms import SearchForm, ContacteForm
+from .forms import SearchForm, ContacteForm, DiscForm
 from django.contrib import messages
 # Create your views here.
 
@@ -20,10 +20,11 @@ def vinil_informacio(request,oferta_disc_id):
     return render(request,"discos/vinil_informacio.html",ctx)
     
 def discos_venuts(request):
-    discos= Oferta_disc.objects.all();
-    ctx={'llista_discos': discos}
+    venuts= request.user.perfil.discos_oferta.filter(venut=True)
+   
+    ctx={'venuts': venuts}
         
-    return render (request, "discos_venuts.html", ctx)
+    return render (request, "discos/discos_venuts.html", ctx)
     
 
 def contacte(request):
@@ -32,7 +33,7 @@ def contacte(request):
         form=ContacteForm(request.POST)
         if form.is_valid():
             nom= form.cleaned_data['nom']
-            email = form.cleaned_date['email']
+            email = form.cleaned_data['email']
             missatge=form.cleaned_data['missatge']
         return redirect ('discos:index')
             
@@ -53,22 +54,29 @@ def contacte(request):
     
     
 def afegir_disc(request,oferta_disc_id=None):
-    DiscForm = modelform_factory(Oferta_disc, fields=('titol', 'grup','anny','genere'))
-    unOferta = Oferta_disc()
-    
+   
     if request.method == 'POST':
-        form = DiscForm (request.POST,request.FILES, instance= unOferta)
+        form = DiscForm(request.POST,request.FILES)
         if form.is_valid():
+           titol= form.cleaned_data['titol']
+           grup = form.cleaned_data['grup']
+           anny=form.cleaned_data['anny']
+           genere=form.cleaned_data['genere']
+           anny=form.cleaned_data['preu']
+           estat=form.cleaned_data['estat']
+           descripcio=form.cleaned_data['descripcio']
            form.save()
            messages.info(request,"pujat correctament disc")
-           return redirect("discos:llista")    
+           return redirect("menu_usuari")    
     else:
-        form= DiscForm (instance = unOferta)
+        form= DiscForm ()
+   
     for f in form.fields:
-        form.fields[f].widget.attrs['class'] = 'form-group'
-        
-        form.fields['genere'].widget.attrs['placeholder']="Email"
- 
+        form.fields[f].widget.attrs['class'] = 'form-control'
+        form.fields['titol'].widget.attrs['placeholder']="Titol"
+        form.fields['grup'].widget.attrs['placeholder']="Grup"
+        form.fields['anny'].widget.attrs['placeholder']="Any"
+        form.fields['preu'].widget.attrs['placeholder']="Preu"
     return render (request, 'discos/afegir_disc.html', {'form': form})    
 
 def editar_disc(request,oferta_disc_id=None):
@@ -94,7 +102,7 @@ def cercador (request):
         form = SearchForm(request.POST)
         if form.is_valid():
             tipus= form.cleaned_data['tipus_de_recerca']
-            text = form.cleaned_date['text']
+            text = form.cleaned_data['text']
             if tipus == "TITOL":
                 #discos
                 q_consulta = Q( titol__icontains = text )

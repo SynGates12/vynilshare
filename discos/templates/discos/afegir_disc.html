@@ -6,7 +6,7 @@
   {% load static %}
     <script src="{% static "js/afegir_disc.js" %}"></script>
     <link href="{% static "css/afegir-disc.css" %}" rel="stylesheet">
-    <link href="{% static "css/Signup.css" %}" rel="stylesheet">
+    <link href="{% static "css/SignUp.css" %}" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
@@ -33,7 +33,7 @@
            {% if user.is_authenticated %}
             <div id="user">
                   <ul class="nav navbar-nav"> 
-                        <li class="active"><a href="{% url "usuaris:menu_usuari" %}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{user}}</a></li></ul>
+                        <li class="active"><a href="{% url "usuaris:menu_usuari"%}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{user}}</a></li></ul>
                     <ul class="nav navbar-nav"> 
                        <li><a href="{% url "usuaris:logout" %}"><span title="Logout" class="glyphicon glyphicon-off" aria-hidden="true"></span></a></li>
                   </ul>     
@@ -48,10 +48,7 @@
       </div>
     </nav>
 
-        
-        
-        
-        
+     
         <div class="contingut-usr">
     
           <div class="row usr-menu">
@@ -76,62 +73,19 @@
                   
                       
                       <div id="columna-disc">
+
+                        <form id="puja-disc" method ="post" action="" enctype = "multipart/form-data">
+                         {% for field in form.visible_fields %}
+                                     {% csrf_token %}
+                      	     <div class="form-group">
+                                        {{ field }}
+                                
+                                </div>
+                           {% endfor %}  
+
                         <form id="puja-disc">
-                          <div class="form-group">
-                            
-                            <input type="text" class="form-control" id="titol" placeholder="Titol" required>
-                          </div>
-                          <div class="form-group">
-                            
-                            <input type="text" class="form-control" id="grup" placeholder="Grup">
-                          </div>
-                          <div class="form-group">
-                            
-                            <input type="text" class="form-control" id="any" placeholder="Any">
-                          </div>
-                          <div class="form-group">
-                            
-                            <input type="text" class="form-control" id="preu" placeholder="Preu" required>
-                          </div>
-                          <div class="form-group">
-                              <label for="genere">Génere Musical</label>
-                              <select class="selectpicker form-control gen" id="genere">
-                              
-                                <option>Rock</option>
-                                <option>Progessive</option>
-                                <option>Alt Rock</option>
-                                <option>Hard Rock</option>
-                                <option>Blues</option>
-                                <option>Heavy Metal</option>
-                                <option>Disco</option>
-                                <option>Hip-Hop</option>
-                                <option>Folk</option>
-                                <option>Indie</option>
-                                <option>Funk</option>
-                                <option>Clàssica</option>
-                                <option>World Music</option>
-                                <option>House</option>
-                                <option>Altres</option>
-                              
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="estat">Estat del disc</label>
-                            <select class="selectpicker form-control status" id="estat">
-                                <option>Nou</option>
-                                <option>Semi-nou</option>
-                                <option>Segona mà</option>
-                            </select>
-                        </div>
-                            
-                         <div class="form-group">
-                          <label for="comment">Descripció:</label>
-                          <textarea class="form-control" rows="5" id="comment"></textarea>
-                        </div>
-                
-                         
-                        
+                          
+                          
                         
                         <div id="pujar">
                             <img id="output" class="img-responsive img-rounded " />
@@ -150,6 +104,9 @@
                             
                             <div id="botons-disc">
                               <button type="submit" class="btn btn-success envia">Enviar</button>
+
+                        </form>
+
                             </div>
                         </div>
                         </form>
