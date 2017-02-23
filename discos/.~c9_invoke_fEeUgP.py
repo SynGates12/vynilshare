@@ -2,11 +2,9 @@
 from django.shortcuts import render,get_object_or_404,redirect
 from django.http import HttpResponse
 from discos.models import Oferta_disc
-from usuaris.models import Perfil, Missatge
 from django.forms import modelform_factory
 from django.db.models import Q
-from .forms import SearchForm, ContacteForm
-from .forms import DiscForm
+from .forms import SearchForm, ContacteForm, DiscForm
 from django.contrib import messages
 # Create your views here.
 
@@ -37,7 +35,6 @@ def contacte(request):
             nom= form.cleaned_data['nom']
             email = form.cleaned_data['email']
             missatge=form.cleaned_data['missatge']
-            form.save()
         return redirect ('discos:index')
             
     else:
@@ -57,6 +54,7 @@ def contacte(request):
     
     
 def afegir_disc(request):
+   
     if request.method == 'POST':
         form = DiscForm(request.POST,request.FILES)
         if form.is_valid():
@@ -64,32 +62,23 @@ def afegir_disc(request):
            grup = form.cleaned_data['grup']
            anny=form.cleaned_data['anny']
            genere=form.cleaned_data['genere']
-           preu=form.cleaned_data['preu']
+           anny=form.cleaned_data['preu']
            estat=form.cleaned_data['estat']
            descripcio=form.cleaned_data['descripcio']
-            
-           Oferta_disc.objects.create( titol=titol,
-                                        grup=grup,
-                                        anny=anny,
-                                        genere=genere,
-                                        preu=preu,
-                                        estat=estat,
-                                        descripcio=descripcio)   
-           
+           form.save()
            messages.info(request,"pujat correctament disc")
-           return redirect("usuaris:menu_usuari")    
+           return redirect("menu_usuari")    
     else:
-        form= DiscForm()
-        print "malo"            
-
+        form= DiscForm ()
+   
     for f in form.fields:
-        form.fields[f].widget.attrs['class'] = 'formulari'
- 
+        form.fields[f].widget.attrs['class'] = 'form-control'
+        form.fields['titol'].widget.attrs['placeholder']="Titol"
+        form.fields['grup'].widget.attrs['placeholder']="Grup"
+        form.fields['anny'].widget.attrs['placeholder']="Any"
+        form.fields['preu'].widget.attrs['placeholder']="Preu"
     return render (request, 'discos/afegir_disc.html', {'form': form})    
-   
 
-   
-   
 def editar_disc(request,oferta_disc_id=None):
     EditForm = modelform_factory(Oferta_disc, fields=('titol', 'grup','anny','genere','estat','descripcio','preu'))
     unEdit = Oferta_disc()

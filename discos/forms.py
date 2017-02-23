@@ -21,7 +21,7 @@ class ContacteForm(forms.Form):
 class DiscForm (forms.Form):
     titol = forms.CharField(max_length=120, label = 'Titol')
     grup = forms.CharField(max_length=120,label="Grup")
-    anny = forms.DateField()
+    anny = forms.DateField(label ="Any")
     GENERE_CHOICES = (
                         ( 'PROGRESSIVE', 'Progessive'),
                         ( 'ALT ROCK', 'Alt Rock'),
@@ -38,13 +38,13 @@ class DiscForm (forms.Form):
                         ( 'HOUSE', 'House'),
                         ( 'ALTRES', 'Altres')
                     )
-    genere=forms.CharField(max_length=50,widget=forms.Select(choices=GENERE_CHOICES),)
+    genere=forms.CharField(label="genere",max_length=50,widget=forms.Select(choices=GENERE_CHOICES),)
     
     ESTAT_CHOICES = (
                         ( 'NOU', 'Nou'),
                         ( 'SEMI-NOU', 'Semi-nou'),
                         ( 'SEGONA MÀ', 'Segona mà'),
                     )
-    estat = forms.CharField(max_length=20,widget=forms.Select(choices=ESTAT_CHOICES),)
-    preu=forms.IntegerField()
-    descripcio= forms.CharField(widget=forms.Textarea)
+    estat = forms.CharField(label="estat",max_length=20,widget=forms.Select(choices=ESTAT_CHOICES),)
+    preu=forms.IntegerField(label="preu")
+    descripcio= forms.CharField(label="descripcio",widget=forms.Textarea)
