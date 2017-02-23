@@ -266,6 +266,11 @@ body {
   margin:auto;
 }
 
+.page-header{
+  display: flex;
+  flex-direction: row;
+}
+
 
 
 .usr-menu{
