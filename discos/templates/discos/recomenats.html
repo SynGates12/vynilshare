@@ -1,9 +1,10 @@
 {% extends "base.html" %}
-{% block title %} Vinyl Homepage {% endblock %}
+{% block title %} Vinyl Recommended {% endblock %}
 
 {% block extra-head %}
 {% load static %}  
 <script src="{% static "js/index.js" %}"></script>
+<link href="{% static "css/recomanats.css" %}" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
@@ -50,7 +51,7 @@
 
       <!-- Main jumbotron for a primary marketing message or call to action -->
       
-      <div id="contingut">
+      <div id="contingut-reco">
           
          {% for disc in recomana_discos %}
          <div class="item">
