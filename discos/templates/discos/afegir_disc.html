@@ -79,7 +79,7 @@
                         <form id="puja-disc">
                           <div class="form-group">
                             
-                            <input type="text" class="form-control" id="titol" placeholder="Titol">
+                            <input type="text" class="form-control" id="titol" placeholder="Titol" required>
                           </div>
                           <div class="form-group">
                             
@@ -91,7 +91,7 @@
                           </div>
                           <div class="form-group">
                             
-                            <input type="text" class="form-control" id="preu" placeholder="Preu">
+                            <input type="text" class="form-control" id="preu" placeholder="Preu" required>
                           </div>
                           <div class="form-group">
                               <label for="genere">Génere Musical</label>
@@ -131,11 +131,11 @@
                         </div>
                 
                          
-                        </form>
+                        
                         
                         <div id="pujar">
-                            <img id="output" class="img-responsive img-rounded "/>
-                            <input type="file" accept="image/*" onchange="loadFile(event)" multiple>
+                            <img id="output" class="img-responsive img-rounded " />
+                            <input type="file" accept="image/*" onchange="loadFile(event)" multiple required>
                             
                             
                             <div class="checkbox">
@@ -152,6 +152,7 @@
                               <button type="submit" class="btn btn-success envia">Enviar</button>
                             </div>
                         </div>
+                        </form>
                       </div>  
               
                   
