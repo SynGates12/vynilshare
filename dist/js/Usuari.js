@@ -39,7 +39,14 @@ $(document).ready(function(){
         $(this).hide();
         $('#amagals').show();
     })
+    
+    $(document).mouseover(function(){
+        $('.amagat').children('.prova').css("background-color", "red");
+    })
+    
+    
 });
+
 
 
 
