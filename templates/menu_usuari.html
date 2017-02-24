@@ -10,7 +10,7 @@
 
 {% block content  %}
 
-        <!-- Fixed navbar -->
+    <!-- Fixed navbar -->
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -66,30 +66,48 @@
     
               <div class="panel panel-default afegir"> 
                   <div id="disc">
-                    <a href='{% url "discos:afegir_disc"%}'>
+                    <a href='{% url "discos:afegir_disc" user.pk %}'>
                       <span class="glyphicon glyphicon-plus-sign mes"> </span>
                       <p>Afegir disc</p>
                     </a>  
                   </div>
               </div>
-                
-                  
+              
+                 {% for disc in discos_meus %}
+                      <div class="item item-usr"> 
+                           <img src="" class="img-responsive hq" id="hq1" />            
+                        <div class="remove clicat"><span class="glyphicon glyphicon-remove" title="Esborrar disc" data-toggle="modal" data-target="#myModalB"></span></div>
+                        <div class="preu" id="preu1">{{ disc.preu }} € </div>
+                        <div class="item-body">
+                          <div class="titol" id="titol1"><a href=""><h6>{{disc.titol}}</h6></a></div>
+                          <div class="user">
+                            <div class="img-user"><a href=""><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a></div>
+                            <div class="name-user"><a class="editting" href="{% url "discos:editar_disc" %}"><small>Editar</small></a></div>
+                          </div>
+                        </div>
+                        <button class="prova btn btn-success button1" type="submit" value="Submit" data-toggle="modal" data-target="#myModal">Venut</button>
+                      </div>
+                 {% endfor %} 
+                 
                   <div class="item item-usr">
                     <img src="images/hqdefault.jpg" class="img-responsive hq" id="hq1">
-                    <div data-toggle="modal" data-target="#myModalB" class="remove clicat"><span class="glyphicon glyphicon-remove" title="Esborrar disc"></span></div>
+                    <div class="remove clicat"><span class="glyphicon glyphicon-remove" title="Esborrar disc" data-toggle="modal" data-target="#myModalB"></span></div>
                     <div class="preu" id="preu1">25 €</div>
                     <div class="item-body">
                       <div class="titol" id="titol1"><a href=""><h6>Dark Side Of The Moon</h6></a></div>
                       <div class="user">
                         <div class="img-user"><a href=""><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a></div>
-                        <div class="name-user"><a class="editting" href="{% url "discos:editar_disc" %}"><small>Editar</small></a></div>
+                        <div class="name-user"><a href=""><small>Editar</small></a></div>
                       </div>
                     </div>
                     <button class="prova btn btn-success button1" type="submit" value="Submit" data-toggle="modal" data-target="#myModal">Venut</button>
                   </div>
-                
                </div>
             </div>
+            
+            
+            
+            
             
              
              <!-- Modal venut-->

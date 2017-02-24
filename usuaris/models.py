@@ -15,7 +15,8 @@ class Perfil (models.Model):
     # 1 to 1 - model User
     usuari = models.OneToOneField( User )
     
-    image = models.ImageField(upload_to='perfil', blank=True)
+    image = models.ImageField(upload_to='perfils',
+                              blank=True)
 
 class Missatge (models.Model):
     data=models.DateField(auto_now_add=True)

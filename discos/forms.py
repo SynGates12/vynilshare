@@ -21,7 +21,7 @@ class ContacteForm(forms.Form):
 class DiscForm (forms.Form):
     titol = forms.CharField(max_length=120, label = 'Titol')
     grup = forms.CharField(max_length=120,label="Grup")
-    anny = forms.DateField(label ="Any")
+    anny = forms.IntegerField(label ="Any")
     GENERE_CHOICES = (
                         ( 'PROGRESSIVE', 'Progessive'),
                         ( 'ALT ROCK', 'Alt Rock'),
@@ -48,3 +48,4 @@ class DiscForm (forms.Form):
     estat = forms.CharField(label="estat",max_length=20,widget=forms.Select(choices=ESTAT_CHOICES),)
     preu=forms.IntegerField(label="preu")
     descripcio= forms.CharField(label="descripcio",widget=forms.Textarea)
+    image = forms.ImageField(label='Selecciona un archivo')

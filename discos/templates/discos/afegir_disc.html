@@ -71,40 +71,33 @@
                 <div class="contingut-disc">
                     <div id="titol-puja"><h3>Pujar Disc</h3></div>
                   
-                      
                       <div id="columna-disc">
-
                         <form id="puja-disc" method ="post" action="" enctype = "multipart/form-data">
                          {% for field in form.visible_fields %}
-                                     {% csrf_token %}
-                      	     <div class="form-group">
-                                        {{ field.label_tag }}                      	             
-                                       {{ field }}
-                       
-                                </div>
+                             {% csrf_token %}
+                      	    <div class="form-group">
+                               {{ field.label_tag }}                      	             
+                               {{ field }}
+                            </div>
                                 
-                                              
+                        <!--Missatge errors -->                 
                             {% if field.errors %}		        	
-              			        <div class="alert alert-danger">
-              			        <button type="button" class="close" data-dismiss="alert">&times;</button>
-              				        <ul>
-              				          {% for error in field.errors%}
-              				          <li>{{ error }}</li>
-              			              {% endfor %}
-              			            </ul>
-              		         	</div>
-              		        {% endif %}
-                                         {% endfor %}  
+                			        <div class="alert alert-danger">
+                			        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                				        <ul>
+                				          {% for error in field.errors%}
+                				              <li>{{ error }}</li>
+                			              {% endfor %}
+                			            </ul>
+                		         	</div>
+                		        {% endif %}
+                         {% endfor %}  
 
-                        <form id="puja-disc">
-                          
-                          
-                        
+                     
+                     
+                     
                         <div id="pujar">
-                            <img id="output" class="img-responsive img-rounded " />
-                            <input type="file" accept="image/*" onchange="loadFile(event)" multiple required>
-                            
-                            
+                           
                             <div class="checkbox">
                               <label><input type="checkbox" value="">Estic disposat a negociar</label>
                             </div>
@@ -117,28 +110,13 @@
                             
                             <div id="botons-disc">
                               <button type="submit" class="btn btn-success envia">Enviar</button>
-
-                        </form>
-
-                            </div>
+                           </div>
                         </div>
-                        </form>
-                      </div>  
-              
-                  
-                  
+                      </form>
+                    </div>  
                   </div>
-                </div>
-                          
-                
-                   
-                    
-              </div>
-            
-             
+               </div>
+          </div>
+     </div>
 
-    </div>
-
-    
-        
 {% endblock %}

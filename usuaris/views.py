@@ -5,9 +5,9 @@ from django.core.urlresolvers import reverse
 from django.forms import modelform_factory
 from .models import Perfil, Missatge
 from discos.models import Oferta_disc
+from django.db.models import Q
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
-from django.core.context_processors import csrf
 from django.contrib.auth import ( login as authLogin,
                                   authenticate,
                                   logout as authLogout )
@@ -76,11 +76,12 @@ def modificar_perfil(request ):
 
 
 def menu_usuari(request):
-    discos = request.user.perfil.discos_oferta.all()
+    discos_oferta= request.user.perfil.discos_oferta.all()
+    print discos_oferta
 #    venuts = request.user.perfil.discos_oferta.filter(venut=True)
-    ctx={"discos":discos}        
+    ctx={"discos_meus":discos_oferta}        
     return render(request,"menu_usuari.html",ctx)
-    
+
  
 
 def login(request):

@@ -56,7 +56,8 @@ def contacte(request):
 
     
     
-def afegir_disc(request):
+def afegir_disc(request,usuari_id):
+    usuari_venedor=Perfil.objects.get(id=usuari_id)
     if request.method == 'POST':
         form = DiscForm(request.POST,request.FILES)
         if form.is_valid():
@@ -67,6 +68,7 @@ def afegir_disc(request):
            preu=form.cleaned_data['preu']
            estat=form.cleaned_data['estat']
            descripcio=form.cleaned_data['descripcio']
+           image=form.cleaned_data['image']
             
            Oferta_disc.objects.create( titol=titol,
                                         grup=grup,
@@ -74,14 +76,14 @@ def afegir_disc(request):
                                         genere=genere,
                                         preu=preu,
                                         estat=estat,
-                                        descripcio=descripcio)   
+                                        descripcio=descripcio,
+                                        usuari_venedor=usuari_venedor,
+                                        image=image)   
            
            messages.info(request,"pujat correctament disc")
            return redirect("usuaris:menu_usuari")    
     else:
         form= DiscForm()
-        print "malo"            
-
     for f in form.fields:
         form.fields[f].widget.attrs['class'] = 'formulari'
  

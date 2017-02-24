@@ -90,8 +90,8 @@ DATABASES = {
 }
 
 
-MEDIA_ROOT=os.path.join(BASE_DIR,'uploads')
-MEDIA_URL="/fitxers_pujats/"
+
+
 
 
 # Password validation
@@ -122,7 +122,7 @@ TIME_ZONE = 'UTC'
 
 
 DATE_INPUT_FORMATS = [
-    '%d-%m-%Y', '%d/%m/%Y', '%d/%m/%y', # '25-10-2006', '25/10/2006', '25/10/06'
+    '%d-%m-%Y', '%d/%m/%Y', '%d/%m/%y',# '25-10-2006', '25/10/2006', '25/10/06'
  
 ]
 
@@ -143,7 +143,8 @@ STATICFILES_DIRS = [
  
     ]
 
-STATIC_ROOT="/tmp/tots_els_fitxers_estics"
+MEDIA_ROOT = os.path.join(BASE_DIR, "pujades")
+MEDIA_URL = '/imatgespujades/'
 
 AUTHENTICATION_BACKENDS=(
     #Facebook
