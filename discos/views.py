@@ -74,7 +74,6 @@ def afegir_disc(request,usuari_id):
            estat=form.cleaned_data['estat']
            descripcio=form.cleaned_data['descripcio']
            image=form.cleaned_data['image']
-            
            Oferta_disc.objects.create( titol=titol,
                                         grup=grup,
                                         anny=anny,
