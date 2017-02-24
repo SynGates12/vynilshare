@@ -272,7 +272,9 @@ body {
   flex-wrap:wrap;
 }
 
-
+.titol.modal{
+  color:#333;
+}
 
 .usr-menu{
   margin-top:25px;
