@@ -45,6 +45,7 @@ body {
 
 .hq{
   width:250px;
+  height:250px;
   padding:0px;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
@@ -272,7 +273,9 @@ body {
   flex-wrap:wrap;
 }
 
-
+.titol.modal{
+  color:#333;
+}
 
 .usr-menu{
   margin-top:25px;
