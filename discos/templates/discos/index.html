@@ -58,19 +58,32 @@
       <!-- Main jumbotron for a primary marketing message or call to action -->
       <div class="jumbotron" id="header">
          
-         
+         <!--cercador -->
          <div class="input-group">
-          <input type="text" id="input-titol" class="form-control" aria-label="...">
-          <div class="input-group-btn">
-            <button type="button" class="btn btn-default dropdown-toggle drop1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Buscar per... <span class="caret"></span></button>
-            <ul class="dropdown-menu">
-              <li><a href="{% url "discos:cercador"%}">Títol</a></li>
-              <li><a href="{% url "discos:cercador"%}">Grup</a></li>
-              <li><a href="{% url "discos:cercador"%}">Génere</a></li> 
-            </ul>
+             <form action="{% url "discos:cercador" %}" method="get" > 
+              <input type="text" id="input-titol" name="q" class="form-control" aria-label="...">
+              <div class="input-group-btn">
+                     
+                        <button type="button" class="btn btn-default dropdown-toggle drop1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Buscar per... <span class="caret"></span></button>
+                        <select name="tipus_de_recerca" onChange="this.form.submit()">
+                            <option value="titol">titol</option>
+                            <option value="grup">grup</option>
+                            <option value="genere">genere</option>
+                         </select>
+                    </form>
+                      <!--Missatge errors -->                 
+                        {% if field.errors %}		        	
+    			        <div class="alert alert-danger">
+        			        <button type="button" class="close" data-dismiss="alert">&times;</button>
+    				        <ul>
+    				          {% for error in field.errors%}
+    				              <li>{{ error }}</li>
+            			              {% endfor %}
+        		            </ul>
+        	         	</div>
+        		        {% endif %}
+                </div>
           </div>
-        </div>
-         
       </div>
       
       <div id="contingut">

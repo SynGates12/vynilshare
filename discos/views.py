@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from django.shortcuts import render,get_object_or_404,redirect
+from django.shortcuts import render,get_object_or_404,redirect, render_to_response
 from django.http import HttpResponse
 from discos.models import Oferta_disc
 from usuaris.models import Perfil, Missatge
@@ -95,10 +95,15 @@ def afegir_disc(request,usuari_id):
     return render (request, 'discos/afegir_disc.html', {'form': form})    
    
 
+<<<<<<< HEAD
+def editar_disc(request,oferta_disc_id=None):
+    EditForm = modelform_factory(Oferta_disc, fields=('titol', 'grup','anny','genere','estat','descripcio','preu'))
+=======
    
    
 def editar_disc(request, oferta_disc_id):
     EditForm = modelform_factory(Oferta_disc, fields=('titol', 'grup','anny','genere','estat','descripcio','preu', 'image'))
+>>>>>>> 403ef305a68b39d0d8e0e6b98e0fc39aa44c2ef1
     unEdit = Oferta_disc()
     
     if oferta_disc_id:
@@ -120,34 +125,34 @@ def editar_disc(request, oferta_disc_id):
     form.fields['descripcio'].widget.attrs['placeholder']="Descripció"
     form.fields['preu'].widget.attrs['placeholder']="Preu"
     return render (request, 'discos/editar_disc.html', {'form': form})    
-    
-def cercador (request):
-    #si és un POST
-    if request.method == 'POST':
-        form = SearchForm(request.POST)
-        if form.is_valid():
-            tipus= form.cleaned_data['tipus_de_recerca']
-            text = form.cleaned_data['text']
-            if tipus == "TITOL":
-                #discos
-                q_consulta = Q( titol__icontains = text )
-            elif tipus == "GRUP":
-                #discos
-                q_consulta = Q( grup__icontains = text )
-            elif tipus == "GENERE":
-                q_consulta = Q( genere_icontains = text )
-                
-        discos = Oferta_disc.objects.filter( q_consulta )   
-    #si no és POST        
+
+
+def cercador(request):
+    query = request.GET.get('q', '')
+    tipus= request.GET.get('tipus_de_recerca')
+    if query:
+       
+        if tipus == "titol":
+            #discos
+            q_consulta = Q(titol__icontains = query )
+        elif tipus == "grup":
+            #discos
+            q_consulta = Q(grup__icontains = query )
+        elif tipus == "genere":
+            q_consulta = Q(genere_icontains = query )
+            
+        results = Oferta_disc.objects.filter(q_consulta)
     else:
-        #torna al formulari
-        form = SearchForm()
-      
-    ctx={"discos":discos}    
-    return render(request,"discos/cercador.html",ctx)
+        results = []
         
-        
+<<<<<<< HEAD
+    return render_to_response("discos/index.html", {
+        "llista_discos": results,
+        "query": query
+    })
+=======
 def ultims(request):
     ultims=Oferta_disc.objects.all().order_by('-data_pujada')[:20]
     ctx={'ultims_discos': ultims}
     return render(request, "discos/ultims.html",ctx)
+>>>>>>> 403ef305a68b39d0d8e0e6b98e0fc39aa44c2ef1
