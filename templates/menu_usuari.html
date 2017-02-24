@@ -25,8 +25,8 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li><a href='{% url "discos:index" %}'>Inici</a></li>
-            <li><a href="#recomanats">Recomanats</a></li>
-            <li><a href="#ultims">Últims</a></li>
+            <li><a href="{%url "discos:recomenats" %}">Recomanats</a></li>
+            <li><a href="{%url "discos:ultims" %}">Últims</a></li>
             <li><a href="{%url "discos:contacte" %}">Contacte</a></li>
           </ul>
           
@@ -75,7 +75,7 @@
               
                  {% for disc in discos_meus %}
                       <div class="item item-usr"> 
-                           <img src="" class="img-responsive hq" id="hq1" />            
+                           <img src="{{disc.image.url}}" class="img-responsive hq"/>            
                         <div class="remove clicat"><span class="glyphicon glyphicon-remove" title="Esborrar disc" data-toggle="modal" data-target="#myModalB"></span></div>
                         <div class="preu" id="preu1">{{ disc.preu }} € </div>
                         <div class="item-body">

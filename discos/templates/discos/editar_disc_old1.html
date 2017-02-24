@@ -5,13 +5,8 @@
 {% block extra-head %}
   {% load static %}
     <script src="{% static "js/afegir_disc.js" %}"></script>
-<link href="{% static "css/afegir-disc.css" %}" rel="stylesheet">
-<link href="{% static "css/SignUp.css" %}" rel="stylesheet">
-<link href="{% static "css/bootstrap-theme.min.css" %}" rel="stylesheet">
-<link href="{% static "css/bootstrap-theme.css" %}" rel="stylesheet">
-<link href="{% static "css/ie10-viewport-bug-workaround.css" %}" rel="stylesheet">
-<link href="{% static "css/bootstrap.css" %}" rel="stylesheet">
-
+    <link href="{% static "css/afegir-disc.css" %}" rel="stylesheet">
+    <link href="{% static "css/Signup.css" %}" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
@@ -30,7 +25,7 @@
           <ul class="nav navbar-nav">
             <li><a href="{% url "discos:index" %}">Inici</a></li>
             <li><a href="{%url "discos:recomenats" %}">Recomanats</a></li>
-            <li><a href="{%url "discos:ultims" %}">Últims</a></li>
+            <li><a href="#ultims">Últims</a></li>
             <li><a href="{%url "discos:contacte" %}">Contacte</a></li>
          </ul>
          
@@ -79,33 +74,67 @@
                 <div class="contingut-disc">
                     <div id="titol-puja"><h3>Editar Disc</h3></div>
                   
+                      
                       <div id="columna-disc">
-                        <form id="puja-disc" method ="post" action="" enctype = "multipart/form-data">
-                         {% for field in form.visible_fields %}
-                             {% csrf_token %}
-                      	    <div class="form-group">
-                                   	             
-                               {{ field }}
-                            </div>
-                                
-                        <!--Missatge errors -->                 
-                            {% if field.errors %}		        	
-                			        <div class="alert alert-danger">
-                			        <button type="button" class="close" data-dismiss="alert">&times;</button>
-                				        <ul>
-                				          {% for error in field.errors%}
-                				              <li>{{ error }}</li>
-                			              {% endfor %}
-                			            </ul>
-                		         	</div>
-                		        {% endif %}
-                         {% endfor %}  
-
-                     
-                     
-                     
+                        <form id="puja-disc">
+                          <div class="form-group">
+                            
+                            <input type="text" class="form-control" id="titol" placeholder="Titol">
+                          </div>
+                          <div class="form-group">
+                            
+                            <input type="text" class="form-control" id="grup" placeholder="Grup">
+                          </div>
+                          <div class="form-group">
+                            
+                            <input type="text" class="form-control" id="any" placeholder="Any">
+                          </div>
+                          <div class="form-group">
+                            
+                            <input type="text" class="form-control" id="preu" placeholder="Preu">
+                          </div>
+                          <div class="form-group">
+                              <label for="genere">Génere Musical</label>
+                              <select class="selectpicker form-control gen" id="genere">
+                              
+                                <option>Rock</option>
+                                <option>Progessive</option>
+                                <option>Alt Rock</option>
+                                <option>Hard Rock</option>
+                                <option>Blues</option>
+                                <option>Heavy Metal</option>
+                                <option>Disco</option>
+                                <option>Hip-Hop</option>
+                                <option>Folk</option>
+                                <option>Indie</option>
+                                <option>Funk</option>
+                                <option>Clàssica</option>
+                                <option>World Music</option>
+                                <option>House</option>
+                                <option>Altres</option>
+                              
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="estat">Estat del disc</label>
+                            <select class="selectpicker form-control status" id="estat">
+                                <option>Nou</option>
+                                <option>Semi-nou</option>
+                                <option>Segona mà</option>
+                            </select>
+                        </div>
+                            
+                         <div class="form-group">
+                          <label for="comment">Descripció:</label>
+                          <textarea class="form-control" rows="5" id="comment"></textarea>
+                        </div>
+                        
                         <div id="pujar">
-                           
+                            <img id="output" class="img-responsive img-rounded "/>
+                            <input type="file" accept="image/*" onchange="loadFile(event)" multiple>
+                            
+                            
                             <div class="checkbox">
                               <label><input type="checkbox" value="">Estic disposat a negociar</label>
                             </div>
@@ -118,12 +147,20 @@
                             
                             <div id="botons-disc">
                               <button type="submit" class="btn btn-success envia">Enviar</button>
-                           </div>
+                              
+                            </div>
                         </div>
-                      </form>
-                    </div>  
+                
+                         
+                        </form>
+                        
+                        
+                      </div>  
+              
+                  
+                  
                   </div>
-               </div>
+                </div>
                           
                 
                    

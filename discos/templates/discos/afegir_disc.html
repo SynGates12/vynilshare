@@ -3,10 +3,16 @@
   {% block title %} Afegir disc {% endblock %}
 
 {% block extra-head %}
-  {% load static %}
-    <script src="{% static "js/afegir_disc.js" %}"></script>
-    <link href="{% static "css/afegir-disc.css" %}" rel="stylesheet">
-    <link href="{% static "css/SignUp.css" %}" rel="stylesheet">
+{% load static %}
+<script src="{% static "js/afegir_disc.js" %}"></script>
+<link href="{% static "css/afegir-disc.css" %}" rel="stylesheet">
+<link href="{% static "css/SignUp.css" %}" rel="stylesheet">
+<link href="{% static "css/bootstrap-theme.min.css" %}" rel="stylesheet">
+<link href="{% static "css/bootstrap-theme.css" %}" rel="stylesheet">
+<link href="{% static "css/ie10-viewport-bug-workaround.css" %}" rel="stylesheet">
+<link href="{% static "css/bootstrap.css" %}" rel="stylesheet">
+
+
 {% endblock %}
 
 {% block content %}
@@ -24,8 +30,8 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li><a href="{% url "discos:index" %}">Inici</a></li>
-            <li><a href="#recomanats">Recomanats</a></li>
-            <li><a href="#ultims">Últims</a></li>
+            <li><a href="{%url "discos:recomenats" %}">Recomanats</a></li>
+            <li><a href="{%url "discos:ultims" %}">Últims</a></li>
             <li><a href="{%url "discos:contacte" %}">Contacte</a></li>
          </ul>
          
@@ -77,8 +83,10 @@
               <div class="row add disc">
                 <div class="contingut-disc">
                     <div id="titol-puja"><h3>Pujar Disc</h3></div>
-                  
-                      <div id="columna-disc">
+
+                    <div id="img-dsk"></div>
+
+
                         <form id="puja-disc" method ="post" action="" enctype = "multipart/form-data">
                          {% for field in form.visible_fields %}
                              {% csrf_token %}

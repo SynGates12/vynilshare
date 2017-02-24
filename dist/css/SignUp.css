@@ -66,6 +66,22 @@
     
 }
 
+#img-dsk{
+     background-image:url("../images/Vinyl_White.png");
+     width:250px;
+     height:250px;
+     background-repeat: no-repeat;
+     background-position: center;
+     background-size: cover;
+     border-radius:1000px;
+     margin:auto;
+}
+
+#img-dsk:hover{
+    opacity:0.8;
+    transform:scale(1.05);
+}
+
 #creaUsuari{
     margin:auto;
     color:white;
