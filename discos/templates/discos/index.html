@@ -79,7 +79,7 @@
          {% for disc in llista_discos %}
          <div class="item">
 
-             <img src="{{usuari_venedor.disc.image.url}}"  class="img-responsive hq" >
+             <img src="{%if disc.image %}{{disc.image.url}}{% endif%}"  class="img-responsive hq" >
                
               <div class="preu" id="preu1">{{ disc.preu }} € </div>
               <div class="item-body">

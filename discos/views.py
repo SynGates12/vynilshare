@@ -97,7 +97,7 @@ def afegir_disc(request,usuari_id):
 
    
    
-def editar_disc(request, oferta_disc_id=None):
+def editar_disc(request, oferta_disc_id):
     EditForm = modelform_factory(Oferta_disc, fields=('titol', 'grup','anny','genere','estat','descripcio','preu', 'image'))
     unEdit = Oferta_disc()
     
