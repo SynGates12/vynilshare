@@ -12,5 +12,6 @@ urlpatterns = [
     url(r'^menu/(?P<usuari_id>\d+)/afegir_disc/$', views.afegir_disc, name="afegir_disc"),
     url(r'^vinil_informacio/(?P<oferta_disc_id>\d+)$', views.vinil_informacio, name="vinil_informacio"),
     url(r'^editar_disc/$', views.editar_disc, name="editar_disc"),
-    url(r'^discos/$', views.discos_venuts,name="discos_venuts")
+    url(r'^discos/$', views.discos_venuts,name="discos_venuts"),
+    url(r'^ultims/$', views.ultims, name='ultims'),
 ]

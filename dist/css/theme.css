@@ -411,6 +411,14 @@ body {
 #contact{
   color: black;
 }
+#img-usr{
+  background-size: cover;
+  width: 250px;
+  height: 250px;
+  background-repeat: no-repeat;
+  background-position: center; 
+  border-radius: 1000px;
+}
 @media only screen and (min-width:900px){
         /* styles for browsers larger than 960px; */
        .disc-usr{
