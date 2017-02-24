@@ -147,4 +147,7 @@ def cercador (request):
     return render(request,"discos/cercador.html",ctx)
         
         
-        
+def ultims(request):
+    ultims=Oferta_disc.objects.all().order_by('-data_pujada')[:20]
+    ctx={'ultims_discos': ultims}
+    return render(request, "discos/ultims.html",ctx)
