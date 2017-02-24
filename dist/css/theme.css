@@ -405,7 +405,9 @@ body {
   left: 88%;
   opacity: 0.8;
 }
-
+#contact{
+  color: black;
+}
 @media only screen and (min-width:900px){
         /* styles for browsers larger than 960px; */
        .disc-usr{

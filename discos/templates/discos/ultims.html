@@ -1,16 +1,10 @@
 {% extends "base.html" %}
-{% block title %} Vinyl Homepage {% endblock %}
+{% block title %} Latest Vinyls {% endblock %}
 
 {% block extra-head %}
 {% load static %}  
 <script src="{% static "js/index.js" %}"></script>
-<script src="../../dist/assets/js/ie-emulation-modes-warning.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.5.4/bootstrap-select.js"></script>
-<script src='https://www.google.com/recaptcha/api.js'></script>
-<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link href="{% static "css/recomanats.css" %}" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
@@ -24,12 +18,12 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Vinylshare</a>
+          <a class="navbar-brand" href="{% url "discos:index" %}">Vinylshare</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Inici</a></li>
-            <li><a href="{%url "discos:recomenats" %}">Recomanats</a></li>
+            <li><a href="{% url "discos:index" %}">Inici</a></li>
+            <li class="active"><a href="#recomanats">Recomanats</a></li>
             <li><a href="#ultims">Últims</a></li>
             <li><a href="{%url "discos:contacte" %}">Contacte</a></li>
          </ul>
@@ -56,40 +50,22 @@
     <div class="container theme-showcase" role="main">
 
       <!-- Main jumbotron for a primary marketing message or call to action -->
-      <div class="jumbotron" id="header">
-         
-         
-         <div class="input-group">
-          <input type="text" id="input-titol" class="form-control" aria-label="...">
-          <div class="input-group-btn">
-            <button type="button" class="btn btn-default dropdown-toggle drop1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Buscar per... <span class="caret"></span></button>
-            <ul class="dropdown-menu">
-              <li><a href="{% url "discos:cercador"%}">Títol</a></li>
-              <li><a href="{% url "discos:cercador"%}">Grup</a></li>
-              <li><a href="{% url "discos:cercador"%}">Génere</a></li> 
-            </ul>
-          </div>
-        </div>
-         
-      </div>
       
-      <div id="contingut">
-        <div class="page-header items">
+      <div id="contingut-reco">
           
-         {% for disc in llista_discos %}
+         {% for disc in ultims_discos %}
          <div class="item">
-
-             <img src="dist/images/hqdefault.jpg" class="img-responsive hq" id="hq1">
-               
+             <img src="dist/images/cc.png" class="img-responsive hq" id="hq1">
+      
               <div class="preu" id="preu1">{{ disc.preu }} € </div>
               <div class="item-body">
                 <div class="titol" id="titol1"><a href=""><h6> {{ disc.titol }} </h6></a></div>
                 <div class="user">
                   <div class="img-user"><a href=""><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></div>
-                  <div class="name-user"><a href=""><small>{{ disc.usuari_venedor.usuari }} </small></a></div>
+                  <div class="name-user"><a href=""><small>{{username}} </small></a></div>
                 </div>
               </div>
-              <button type="button" class="btn btn-success button1" data-toggle="modal" data-target="#contact">Contactar</button>
+              <button type="button" class="btn btn-success button1">Contactar</button>
             </div>
         {% endfor %}  
           </div>
@@ -138,47 +114,8 @@
         
        
      </div>
-     {% if user.is_authenticated %}
-     <div id="contact" class="modal fade" role="dialog">
-                <div class="modal-dialog">
-                    <!-- Modal content-->
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Enviar missatge a </h4>
-                        </div>
-                        <div class="modal-body">
-                            <textarea rows="4" cols="50"></textarea>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel·lar</button>
-                            <button id="YES" type="button" class="okReservar btn btn-success" data-dismiss="modal">Enviar</button>
-                        </div>
-                    </div>
-
-                </div>
-    </div>
-    {% else %}
-    <div id="contact" class="modal fade" role="dialog">
-                <div class="modal-dialog">
-
-                    <!-- Modal content-->
-                    <div class="modal-content">
-                        <div class="modal-body">
-                            <div class="form-group">
-                              <center><font color="black">Inicia sessió per contactar amb aquest usuari!</font></center>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Sortir</button>
-                            <a href="{% url "usuaris:login" %}"><button id="YES" type="button" class="okReservar btn btn-success">Loguejar-se</button></a>
-                            
-                        </div>
-                    </div>
-
-                </div>
-    </div>
-    {% endif %}
+     
+    
     </nav>
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -192,4 +129,3 @@
 
  {% endblock %}
      
-
