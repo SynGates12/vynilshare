@@ -8,6 +8,7 @@ from django.db.models import Q
 from .forms import SearchForm, ContacteForm
 from .forms import DiscForm
 from django.contrib import messages
+ 
 # Create your views here.
 
 def index(request):
@@ -15,7 +16,11 @@ def index(request):
     ctx={'llista_discos': discos}
     return render(request, "discos/index.html",ctx)
     
-
+def recomenats(request):
+    recomendados=Oferta_disc.objects.all().order_by('?')[:12]
+    ctx={'recomana_discos': recomendados}
+    return render(request, "discos/recomenats.html",ctx)
+    
 def vinil_informacio(request,oferta_disc_id):
     vinil = get_object_or_404(Oferta_disc,pk=oferta_disc_id)
     ctx={'vinil': vinil}
