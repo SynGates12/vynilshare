@@ -63,9 +63,16 @@
                     <a href='{% url "usuaris:modificar_perfil" %}' class="list-group-item"><span class="glyphicon glyphicon-cog"></span> Modificar Dades</a>
                     <a href='{% url "discos:discos_venuts" %}' class="list-group-item"><span class="glyphicon glyphicon-cd"></span> Discos Venuts</a>
                   </div>
+                  <div class="list-group">
+                      {% for missatge in llista_rebuts %}
+                                              	             
+                               {{ missatge }}
+                      </div>
+                    
+                  </div>
               </div>
-              </div>
-              </div>
+            </div>
+          </div>
               
               <div class="row add disc">
                 <div class="contingut-disc">
