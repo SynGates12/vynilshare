@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+ 
+ {% block title %} User informacio {% endblock %}
+ 
+{% block extra-head %} 
+  {% load static %}
+    <script src="{% static "js/index.js" %}"></script>
+    <script src="{% static "js/Usuari.js" %}"></script>
+{% endblock %}
+
+{% block content  %}
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Vynilshare</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href='{% url "discos:index" %}'>Inici</a></li>
+            <li><a href="{%url "discos:recomanats" %}">Recomanats</a></li>
+            <li><a href="">Últims</a></li>
+            <li><a href="{%url "discos:contacte" %}">Contacte</a></li>
+          </ul>
+          
+          
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+    
+    <div class="contingut-usr">
+    
+    <div class="row usr-menu">
+     
+      <div class="col-xs-3">
+          <div class="panel panel-default menu-usr">
+          <!-- Default panel contents -->
+          <div class="panel-heading">Menú</div>
+          
+          {{ usuari_venedor.usuari}}<br>
+          <!-- List group -->
+           {{valoracio }}
+           
+        </div>
+        </div>
+        </div>
+        
+        <div class="row add">
+          <div class="col-xs-12 disc-usr">
+            
+                
+              
+                 {% for disc in discos_oferta %}
+                      <div class="item item-usr"> 
+                         <img src="{{ disc.image.url }}" class="img-responsive hq"/>            
+                        <div class="remove clicat"><span class="glyphicon glyphicon-remove" title="Esborrar disc" data-toggle="modal" data-target="#myModalB"></span></div>
+                        <div class="preu" id="preu1">{{ disc.preu }} € </div>
+                        <div class="item-body">
+                          <div class="titol" id="titol1"><a href="{% url "discos:vinil_informacio" disc.pk %}"><h6>{{ disc.titol }}</h6></a></div>
+                          <div class="user">
+                            <div class="img-user"><a href=""><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a></div>
+                            <div class="name-user"><a class="editting" href="{% url "discos:editar_disc" %}"><small>Editar</small></a></div>
+                          </div>
+                        </div>
+                        <button class="prova btn btn-success button1" type="submit" value="Submit" data-toggle="modal" data-target="#myModal">Venut</button>
+                      </div>
+                 {% endfor %} 
+                 
+                  
+            
+            
+            
+{% endblock %}
+

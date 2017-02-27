@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from django import forms
 
+#formulari BUSCADOR que al final no fem servir
 class SearchForm(forms.Form):
     CHOICE_L = (
                 ( 'TITOL', 'titol'),

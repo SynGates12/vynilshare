@@ -1,8 +1,15 @@
 {% extends "base.html" %}
+
+   {% block title %} Vinil informació {% endblock %}
+
 {% block extra-head %} 
-  {% load static %}
-    <script src="{% static "js/vinilInfo.js" %}"></script>
+    {% load static %}
+      <script src="{% static "js/vinilInfo.js" %}"></script>
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+      <script src="script.js"></script>
+      <link rel="stylesheet" href="{% static "css/style.css" %}">
 {% endblock %}
+
 {% block content %}
 <!-- Fixed navbar -->
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -14,40 +21,76 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="{% url "discos:index" %}">Vinylshare</a>
+          <a class="navbar-brand" href="{% url "discos:index" %}"> Vinylshare </a>
         </div>
+        
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a href="{% url "discos:index" %}">Inici</a></li>
-            <li><a href="{%url "discos:recomenats" %}">Recomanats</a></li>
-            <li><a href="{%url "discos:ultims" %}">Últims</a></li>
-            <li><a href="{%url "discos:contacte" %}">Contacte</a></li>
+            <li><a href="{% url "discos:index" %}"> Inici </a></li>
+            <li><a href="{% url "discos:recomanats" %}"> Recomanats </a></li>
+            <li><a href="{% url "discos:ultims" %}"> Últims </a></li>
+            <li><a href="{% url "discos:contacte" %}"> Contacte </a></li>
          </ul>
          
-
-           {% if user.is_authenticated %}
-            <div id="user">
+          <!-- USUARI -->
+          {% if user.is_authenticated %}
+          <div id="user">
+                <ul class="nav navbar-nav"> 
+                      <li><a href="{% url "usuaris:menu_usuari" %}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{ user }}</a></li></ul>
                   <ul class="nav navbar-nav"> 
-                        <li><a href="{% url "usuaris:menu_usuari" %}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{user}}</a></li></ul>
-                    <ul class="nav navbar-nav"> 
-                       <li><a href="{% url "usuaris:logout" %}"><span title="Logout" class="glyphicon glyphicon-off" aria-hidden="true"></span></a></li>
-                  </ul>     
-            </div>
-                  
-            </div>
-            {% else %}
-                <div id="user"><ul class="nav navbar-nav"> <li><a href="{% url "usuaris:login" %}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Login</a></li></ul></div>
-            {% endif %}
-     
-          </div><!--/.nav-collapse -->
+                     <li><a href="{% url "usuaris:logout" %}"><span title="Logout" class="glyphicon glyphicon-off" aria-hidden="true"></span></a></li>
+                </ul>     
+          </div>
+          {% else %}
+            <div id="user"><ul class="nav navbar-nav"> <li><a href="{% url "usuaris:login" %}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Login</a></li></ul></div>
+          {% endif %}
+          
+         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
-
-
-<div>
-    <span>HHHOOOOLLLLLLAAA</span>
-</div>
-
+<!--INFORMACIÓ DEL VINIL -->
+<div class="container theme-showcase" role="main">
+  
+    <div id="contingut-reco">
+      <div id="imatge">
+        <img src="{% if disc.image %}{{ disc.image.url }}{% endif%}" class="img-responsive hq" >
+      </div>
+     </div>
+      <div class="contingut-usr">
+        <div class="row usr-menu">
+         <div id="content-login">
+           <ul>
+            <li><h1> {{ disc.titol }} </h1></li>
+            <li><h3> {{ disc.grup }} </h3> <h3> {{ disc.genere }} </h3></li>  
+            <li> {{ disc.preu }} € </li>
+            <li> {{ disc.descripcio}} </li>
+            </ul>
+          </div>       
+          <div class="user">
+            <div class="img-user"><a href=""><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></div>
+            <div class="name-user"><a href=""><small>{{ disc.usuari_venedor.usuari }} </small></a></div>
+            <div id="valoracio">
+            <form>
+              <p class="clasificacion">
+                <input id="radio1" name="estrellas" value="5" type="radio">
+                <label for="radio1">★</label>
+                <input id="radio2" name="estrellas" value="4" type="radio">
+                <label for="radio2">★</label>
+                <input id="radio3" name="estrellas" value="3" type="radio">
+                <label for="radio3">★</label>
+                <input id="radio4" name="estrellas" value="2" type="radio">
+                <label for="radio4">★</label>
+                <input id="radio5" name="estrellas" value="1" type="radio">
+                <label for="radio5">★</label>
+              </p>
+            </form>
+            </div>
+          </div>
+        </div>
+          <button type="button" class="btn btn-success button1">Contactar</button>
+      </div>
+     </div>
+  </div>
 
 {% endblock %}
