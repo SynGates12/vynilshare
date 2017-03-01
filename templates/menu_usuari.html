@@ -55,13 +55,19 @@
               <a href='{% url "usuaris:modificar_perfil" %}' class="list-group-item"><span class="glyphicon glyphicon-cog"></span> Modificar Dades</a>
               <a href='{% url "discos:discos_venuts" %}' class="list-group-item"><span class="glyphicon glyphicon-cd"></span> Discos Venuts</a>
             </div>
-        </div>
-        </div>
-        </div>
+            <!--Missatges-->
+            <div class="list-group">
+              {% for missatge in llista_rebuts %}
+                    {{ missatge }}
+                {% endfor %}       
+            </div>
+          </div>
+      </div>
+     </div>
+        
         
         <div class="row add">
           <div class="col-xs-12 disc-usr">
-            
                 <div class="panel panel-default afegir"> 
                   <div id="disc">
                     <a href='{% url "discos:afegir_disc" user.pk %}'>
@@ -69,46 +75,27 @@
                       <p>Afegir disc</p>
                     </a>  
                   </div>
-              </div>
+                </div>
               
                  {% for disc in discos_meus %}
                       <div class="item item-usr"> 
-                        <img src="{% if disc.image %}{{ disc.image.url }}{% endif%}" class="img-responsive hq" >           
-                        <div class="remove clicat"><span class="glyphicon glyphicon-remove" title="Esborrar disc" data-toggle="modal" data-target="#myModalB"></span></div>
-                        <div class="preu" id="preu1">{{ disc.preu }} € </div>
-                        <div class="item-body">
-                          <div class="titol" id="titol1"><a href="{% url "discos:vinil_informacio" disc.pk %}"><h6>{{ disc.titol }}</h6></a></div>
-                          <div class="user">
-                            <div class="img-user"><a href=""><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a></div>
-                            <div class="name-user"><a class="editting" href="{% url "discos:editar_disc" disc.pk %}"><small>Editar</small></a></div>
+                          <img src="{% if disc.image %}{{ disc.image.url }}{% endif%}" class="img-responsive hq" >
+                          <div class="remove"><a class="editting" href="{% url "discos:eliminar_disc" disc.pk %}"><small><span class="glyphicon glyphicon-remove" title="Esborrar disc" ></span></small></a></div>
+                         
+                          <div class="preu" id="preu1">{{ disc.preu }} € </div>
+                          <div class="item-body">
+                            <div class="titol" id="titol1"><a href="{% url "discos:vinil_informacio" disc.pk %}"><h6>{{ disc.titol }}</h6></a></div>
+                            <div class="user">
+                              <div class="img-user"><a href=""><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a></div>
+                              <div class="name-user"><a class="editting" href="{% url "discos:editar_disc" disc.pk %}"><small>Editar</small></a></div>
+                            </div>
                           </div>
-                        </div>
-                        <button class="prova btn btn-success button1" type="submit" value="Submit" data-toggle="modal" data-target="#myModal">Venut</button>
+                          <button class="prova btn btn-success button1" type="submit" value="Submit" data-toggle="modal" data-target="#myModal">Venut</button>
                       </div>
                  {% endfor %} 
                  
-                  <div class="item item-usr">
-                    <img src="images/hqdefault.jpg" class="img-responsive hq" id="hq1">
-                    <div class="remove clicat"><span class="glyphicon glyphicon-remove" title="Esborrar disc" data-toggle="modal" data-target="#myModalB"></span></div>
-                    <div class="preu" id="preu1">25 €</div>
-                    <div class="item-body">
-                      <div class="titol" id="titol1"><a href=""><h6>Dark Side Of The Moon</h6></a></div>
-                      <div class="user">
-                        <div class="img-user"><a href=""><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a></div>
-                        <div class="name-user"><a href=""><small>Editar</small></a></div>
-                      </div>
-                    </div>
-                    <button class="prova btn btn-success button1" type="submit" value="Submit" data-toggle="modal" data-target="#myModal">Venut</button>
-                  </div>
-               </div>
-            </div>
-            
-            
-            
-            
-            
-             
-             <!-- Modal venut-->
+                 
+            <!-- Modal venut-->
              <div id="myModal" class="modal fade" role="dialog" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
                 <div class="modal-dialog">
 

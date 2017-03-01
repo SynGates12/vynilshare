@@ -1,4 +1,5 @@
 from django import forms
+from django.conf import settings
 from .models import Perfil
 from django.contrib.auth.models import User
 from django.forms import ModelForm
@@ -22,4 +23,9 @@ class nou_usuari_form(forms.Form):
                              max_length=24,
                              help_text="Paraula de pas per accedir a sistema.",
                              widget=forms.PasswordInput(),
-                            )                            
+                            )
+
+class MissatgeForm(forms.Form):
+    text=forms.CharField(label="descripcio",widget=forms.Textarea)
+    data_lectura=forms.DateField(label="data_lectura",input_formats=settings.DATE_INPUT_FORMATS)
+    
