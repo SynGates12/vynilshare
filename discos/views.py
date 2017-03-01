@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.shortcuts import render,get_object_or_404,redirect, render_to_response
+from django.core.urlresolvers import reverse
 from django.http import HttpResponse
 from discos.models import Oferta_disc
 from usuaris.models import Perfil, Missatge
@@ -49,8 +50,8 @@ def discos_venuts(request):
 
 
 #INFORMACIO USUARI ------
-def usuari_informacio(request,usuari_venedor_id):
-    usuari=Oferta_disc.objects.get(usuari_venedor_id=usuari_venedor.id)
+def usuari_informacio(request,usuari_id):
+    usuari=Oferta_disc.objects.get(usuari_venedor_id=usuari_id)
     discos_oferta= usuari.discos_oferta.all()
     valoracio=usuari.valoracio
     
@@ -120,9 +121,9 @@ def afegir_disc(request,usuari_id):
         form.fields[f].widget.attrs['class'] = 'formulari'
         
     return render (request, 'discos/afegir_disc.html', {'form': form} )    
+
    
 #EDITAR DISC EXISTENT
-
 def editar_disc(request, oferta_disc_id):
     EditForm = modelform_factory(Oferta_disc, fields=('titol', 'grup','anny','genere','estat','descripcio','preu', 'image'))
     unEdit = Oferta_disc()
@@ -150,6 +151,21 @@ def editar_disc(request, oferta_disc_id):
     form.fields['preu'].widget.attrs['placeholder']="Preu"
     
     return render (request, 'discos/editar_disc.html', {'form': form} )    
+
+#ESBORRAR DISC -----
+def eliminar_disc(request,oferta_disc_id):
+    disc = Oferta_disc.objects.get(id=oferta_disc_id)
+    
+    #si el métode és POST
+    if request.method == 'POST':
+        disc.delete()
+        return redirect('usuaris:menu_usuari')
+
+    else:
+        return render(request, 'discos/eliminar_disc.html', {'disc': disc})
+
+
+
 
 #CERCADOR que tantas làgrimas ha costao ----
 def cercador(request):

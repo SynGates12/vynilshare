@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-  {% block title %} Afegir disc {% endblock %}
+  {% block title %} Esborrar disc {% endblock %}
 
 {% block extra-head %}
 {% load static %}
@@ -16,7 +16,8 @@
 {% endblock %}
 
 {% block content %}
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -74,59 +75,38 @@
                     <a href='{% url "discos:discos_venuts" %}' class="list-group-item"><span class="glyphicon glyphicon-cd"></span> Discos Venuts</a>
                   </div>
                   
-              </div>
+                  <div class="row add disc">
+                    <div class="contingut-disc">
+                        <form id="puja-disc" method ="post" action="">
+                             {% csrf_token %}
+                          	    <h4>Segur que vols esborrar el disc <strong>{{ disc.titol }}</strong> ?</h4>
+                          	    
+                          	<button type="submit" class="btn btn-success"> Confirmar </button>
+                            <button type="submit" class="btn btn btn-danger"><a href="{% url "discos:index" %}"> Cancel.lar </button>    
+                          
+                        </form>
+                    </div>
+                </div> 
             </div>
-          </div>
-              
-              <div class="row add disc">
-                <div class="contingut-disc">
-                    <div id="titol-puja"><h3>Pujar Disc</h3></div>
-
-                    <div id="img-dsk"></div>
-
-
-                        <form id="puja-disc" method ="post" action="" enctype = "multipart/form-data">
-                         {% csrf_token %}
-                         {% for field in form.visible_fields %}
-                      	    <div class="form-group">
-                               {{ field.label_tag }}                      	             
-                               {{ field }}
-                            </div>
-                                
-                        <!--Missatge errors -->                 
-                            {% if field.errors %}		        	
-                			        <div class="alert alert-danger">
-                			        <button type="button" class="close" data-dismiss="alert">&times;</button>
-                				        <ul>
-                				          {% for error in field.errors%}
-                				              <li>{{ error }}</li>
-                			              {% endfor %}
-                			            </ul>
-                		         	</div>
-                		        {% endif %}
-                        {% endfor %}  
-
-                     
-                     
-                     
-                        <div id="pujar">
-                           
-                            <div class="checkbox">
-                              <label><input type="checkbox" value="">Estic disposat a negociar</label>
-                            </div>
-                            <div class="checkbox">
-                              <label><input type="checkbox" value="">Estic disposat a fer enviaments</label>
-                            </div>
-                            <div class="checkbox">
-                              <label><input type="checkbox" value="">Estic disposat a intercanviar vinils</label>
-                            </div>
-                            
-                            <div id="botons-disc">
-                              <button type="submit" class="btn btn-success envia">Enviar</button>
-                           </div>
-                        </div>
-                      </form>
-                    </div>  
-                  </div>
-
+        </div>
+    </div>
+</div>         
+   
 {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
