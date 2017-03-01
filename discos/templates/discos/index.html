@@ -69,16 +69,18 @@
       <div class="jumbotron" id="header">
          
          <!--cercador -->
-         <div class="input-group">
+         <div class="input-group input-header">
             <!--formulari - METHOD:GET --> 
             <form action="{% url "discos:cercador" %}" method="get" > 
-                <input type="text" id="input-titol" name="q" class="form-control" aria-label="...">
+                
                 <div class="input-group-btn">
+                    <input type="text" id="input-titol" name="q" class="form-control" placeholder="Que busques?" aria-label="...">
                  <!--SELECCIÓ -->                    
-                  <select name="tipus_de_recerca" onChange="this.form.submit()">
-                    <option value="titol">titol</option>
-                    <option value="grup">grup</option>
-                    <option value="genere">genere</option>
+                  <select name="tipus_de_recerca" id="select-index" onChange="this.form.submit()">
+                    <option value="Busca per..." disabled default selected>Busca per...</option>
+                    <option value="titol">Titol</option>
+                    <option value="grup">Grup</option>
+                    <option value="genere">Genere</option>
                  </select>
                 </div>
             </form>

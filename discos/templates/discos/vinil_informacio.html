@@ -8,6 +8,7 @@
       <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
       <script src="script.js"></script>
       <link rel="stylesheet" href="{% static "css/style.css" %}">
+      <link rel="stylesheet" href="{% static "css/usuari_info.css" %}">
 {% endblock %}
 
 {% block content %}
@@ -50,21 +51,22 @@
     </nav>
 
 <!--INFORMACIÓ DEL VINIL -->
-<div class="container theme-showcase" role="main">
+<div class="container theme-showcase info-usr" role="main">
   
     <div id="contingut-reco">
-      <div id="imatge">
-        <img src="{% if disc.image %}{{ disc.image.url }}{% endif%}" class="img-responsive hq" >
-      </div>
+    
+      <div class="conti-usuari">
+       <div id="imatge">
+        <img src="{% if disc.image %}{{ disc.image.url }}{% endif%}" class="dsk-img" >
+       </div>
      </div>
-      <div class="contingut-usr">
-        <div class="row usr-menu">
+        <div class="desc">
          <div id="content-login">
-           <ul>
-            <li><h1> {{ disc.titol }} </h1></li>
-            <li><h3> {{ disc.grup }} </h3> <h3> {{ disc.genere }} </h3></li>  
-            <li> {{ disc.preu }} € </li>
-            <li> {{ disc.descripcio}} </li>
+           <ul class="list-group">
+            <li class="list-group-item"><h1> {{ disc.titol }} </h1></li>
+            <li class="list-group-item"><h3> {{ disc.grup }} </h3> <h3> {{ disc.genere }} </h3></li>  
+            <li class="list-group-item"> {{ disc.preu }} € </li>
+            <li class="list-group-item"> {{ disc.descripcio}} </li>
             </ul>
           </div>       
           <div class="user">
@@ -86,11 +88,14 @@
               </p>
             </form>
             </div>
+            
+            <button type="button" class="btn btn-success boto-cntc">Contactar</button>
           </div>
         </div>
-          <button type="button" class="btn btn-success button1">Contactar</button>
+          
       </div>
+      
      </div>
-  </div>
+ 
 
 {% endblock %}
