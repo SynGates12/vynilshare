@@ -166,7 +166,6 @@ def eliminar_disc(request,oferta_disc_id):
 
 
 
-
 #CERCADOR que tantas làgrimas ha costao ----
 def cercador(request):
     #fem la consulta

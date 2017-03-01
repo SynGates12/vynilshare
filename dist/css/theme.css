@@ -235,6 +235,49 @@ body {
  
 }
 
+/*#select-index{
+  width:40%;
+  height:34px;
+  opacity: 0.9;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  border:none;
+  margin:auto;
+}
+
+#select-index:hover{
+  opacity: 1;
+}*/
+
+#select-index {
+    border: 1px solid #ccc;
+    width: 15%;
+    height: 34px;
+    border-radius: 3px;
+    overflow: hidden;
+    background: #fafafa url("/dist/images/select-icon.png") no-repeat 90% 50%;
+    opacity:0.9;
+}
+
+#select-index select {
+    padding: 5px 8px;
+    width: 130%;
+    border: none;
+    box-shadow: none;
+    background: transparent;
+    background-image: none;
+    -webkit-appearance: none;
+}
+
+#select-index select:focus {
+    outline: none;
+    opacity: 1;
+}
+
+.input-header{
+  width:88%;
+}
+
 .afegir:hover{
   background:#757371;
   cursor: pointer;
