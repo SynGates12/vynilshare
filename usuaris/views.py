@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.shortcuts import render, get_object_or_404, redirect, render_to_response
-from .forms import LoginForm, nou_usuari_form
+from .forms import LoginForm, nou_usuari_form, MissatgeForm
 from django.core.urlresolvers import reverse
 from django.forms import modelform_factory
 from .models import Perfil, Missatge
@@ -88,7 +88,12 @@ def menu_usuari(request):
     return render(request,"menu_usuari.html",ctx)
 
 
-  
+#MISSATGES ---------
+#def missatge_rebuts(request,oferta_disc_id):
+#    disc=Oferta_disc.objects.get(id=oferta_disc_id)
+#    msm_rebut={'llista_rebut':llista_rebuts}
+#    return render (request, 'missatges.html', {'llista_rebuts': llista_rebut})
+
 
 #LOGEJAR-SE ------
 def login(request):
