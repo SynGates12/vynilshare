@@ -162,12 +162,13 @@ body {
 
 #dina{
   width:120px;
-  
+  height: 40px;
   
 }
 
 #puntcat{
   width:40px;
+  height: 40px;
    
 }
 
@@ -463,6 +464,14 @@ body {
   background-repeat: no-repeat;
   background-position: center; 
   border-radius: 1000px;
+}
+
+.rm{
+  color:red;
+}
+
+.rm:hover{
+  color:#CC0000;
 }
 @media only screen and (min-width:900px){
         /* styles for browsers larger than 960px; */
