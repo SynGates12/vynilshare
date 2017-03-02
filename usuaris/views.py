@@ -120,9 +120,9 @@ def crear_missatge(request,oferta_disc_id):
 
   
 #MISSATGES ---------
-def missatge_rebuts(request,oferta_disc_id):
-    disc=Oferta_disc.objects.get(id=oferta_disc_id)
-    llista_rebuts= disc.missatge_rebuts.all()
+def missatge_rebuts(request):
+    llista_rebuts= request.user.perfil.missatge_rebuts.all()
+    
     return render (request, 'missatges.html', {'llista_rebuts':llista_rebuts})
 
 
