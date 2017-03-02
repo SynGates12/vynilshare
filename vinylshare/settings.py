@@ -26,7 +26,7 @@ SECRET_KEY = 'l*6^-(v=21)lan6u1r9u!98-#k!l*#r+j#kwxuy62@y-ato81-'
 #Per defecte es True. Posat a False perque no se que vol el Facebook
 DEBUG = True 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['vynilshare.cat', '127.0.0.1']
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 
