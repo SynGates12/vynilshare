@@ -80,10 +80,14 @@
                         <form id="puja-disc" method ="post" action="">
                              {% csrf_token %}
                           	    <h4>Segur que vols esborrar el disc <strong>{{ disc.titol }}</strong> ?</h4>
+                                            	  
+                              <div class="card-action">
+                              <button class="btn btn-succes" type="submit">Confirmar</button>
+                              <a class="btn btn btn-danger"
+                               href="{% url 'usuaris:menu_usuari' %}">Cancelar</a>
+                            </div>        
                           	    
-                          	<button type="submit" class="btn btn-success"> Confirmar </button>
-                            <button type="submit" class="btn btn btn-danger"><a href="{% url "discos:index" %}"> Cancel.lar </button>    
-                          
+                          	
                         </form>
                     </div>
                 </div> 

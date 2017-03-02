@@ -50,3 +50,5 @@ class DiscForm (forms.Form):
     preu=forms.IntegerField(label="preu")
     descripcio= forms.CharField(label="descripcio",widget=forms.Textarea)
     image = forms.ImageField(label='Selecciona un archivo')
+    
+

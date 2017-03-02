@@ -21,7 +21,7 @@ class Perfil (models.Model):
 class Missatge (models.Model):
     data=models.DateField(auto_now_add=True)
     text=models.CharField(max_length=250,)
-    data_lectura=models.DateTimeField()
+    data_lectura=models.DateField(blank=True, null=True)
     msm_from=models.ForeignKey(Perfil,on_delete=models.SET_NULL,blank=True, null=True, related_name="missatges_enviats")
     msm_to=models.ForeignKey(Perfil,on_delete=models.SET_NULL,blank=True, null=True, related_name="missatges_rebuts")
     disc=models.ForeignKey('discos.Oferta_disc' )

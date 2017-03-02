@@ -10,6 +10,7 @@ from django.db.models import Q
 from .forms import SearchForm, ContacteForm
 from .forms import DiscForm
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
  
 # Create your views here.
 
@@ -51,7 +52,7 @@ def discos_venuts(request):
 
 #INFORMACIO USUARI ------
 def usuari_informacio(request,usuari_id):
-    usuari=Oferta_disc.objects.get(usuari_venedor_id=usuari_id)
+    usuari=Perfil.objects.get(id=usuari_id)
     discos_oferta= usuari.discos_oferta.all()
     valoracio=usuari.valoracio
     
@@ -153,16 +154,16 @@ def editar_disc(request, oferta_disc_id):
     return render (request, 'discos/editar_disc.html', {'form': form} )    
 
 #ESBORRAR DISC -----
-def eliminar_disc(request,oferta_disc_id):
-    disc = Oferta_disc.objects.get(id=oferta_disc_id)
+def eliminar_disc(request,oferta_disc_id=None):
     
     #si el métode és POST
     if request.method == 'POST':
-        disc.delete()
-        return redirect('usuaris:menu_usuari')
-
+        disc = get_object_or_404(Oferta_disc, pk=oferta_disc_id);
+        if (oferta_disc_id):
+            disc.delete()
+            return redirect('usuaris:menu_usuari')
     else:
-        return render(request, 'discos/eliminar_disc.html', {'disc': disc})
+        return render(request, 'discos/eliminar_disc.html', {'disc': Oferta_disc.objects.get(pk=oferta_disc_id)})
 
 
 
@@ -181,7 +182,7 @@ def cercador(request):
             q_consulta = Q(grup__icontains = query )
         elif tipus == "genere":
             #genere
-            q_consulta = Q(genere_icontains = query )
+            q_consulta = Q(genere__icontains = query )
         #resultats me'ls fiques a la variable 'results'    
         results = Oferta_disc.objects.filter(q_consulta)
     else:
@@ -191,4 +192,5 @@ def cercador(request):
                                 { "llista_discos": results,
                                    "query": query }
                                )
+
 

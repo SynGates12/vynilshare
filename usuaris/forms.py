@@ -27,5 +27,5 @@ class nou_usuari_form(forms.Form):
 
 class MissatgeForm(forms.Form):
     text=forms.CharField(label="descripcio",widget=forms.Textarea)
-    data_lectura=forms.DateField(label="data_lectura",input_formats=settings.DATE_INPUT_FORMATS)
+    data_lectura=forms.DateField(label="data_lectura",required=False)
     

@@ -4,10 +4,12 @@ from .forms import LoginForm, nou_usuari_form, MissatgeForm
 from django.core.urlresolvers import reverse
 from django.forms import modelform_factory
 from .models import Perfil, Missatge
+from django.conf import settings
 from discos.models import Oferta_disc
 from django.db.models import Q
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth import ( login as authLogin,
                                   authenticate,
                                   logout as authLogout )
@@ -83,16 +85,46 @@ def modificar_perfil(request):
 #MENÚ USUARI -----------
 def menu_usuari(request):
     discos_oferta= request.user.perfil.discos_oferta.all()
+    
 #    venuts = request.user.perfil.discos_oferta.filter(venut=True)
     ctx={"discos_meus":discos_oferta}        
     return render(request,"menu_usuari.html",ctx)
 
+#CREAR MISSATGE --------
+@login_required()
+def crear_missatge(request,oferta_disc_id):
+    disc=Oferta_disc.objects.get(pk=oferta_disc_id)
+    usuari_venedor=disc.usuari_venedor
+    msm_from=request.user.perfil
+    
+    
+    #si és POST
+    if request.method == 'POST':
+        msmform = MissatgeForm(request.POST )
+        if msmform.is_valid():
+            text  = msmform.cleaned_data['text']
+            nou_msm=Missatge.objects.create (text=text,
+                                             disc=disc,
+                                             msm_from=msm_from,
+                                             msm_to=usuari_venedor
+                                             )
+            messages.info(request,"Missatge enviat correctament")
+            return redirect('discos:index')
+    else:
+        msmform =  MissatgeForm()
+    
+    for f in msmform.fields:
+        msmform.fields[f].widget.attrs['class'] = 'formulari'
+        
+    return render(request, 'crear_missatge.html', {'form': msmform,} )
 
+  
 #MISSATGES ---------
-#def missatge_rebuts(request,oferta_disc_id):
-#    disc=Oferta_disc.objects.get(id=oferta_disc_id)
-#    msm_rebut={'llista_rebut':llista_rebuts}
-#    return render (request, 'missatges.html', {'llista_rebuts': llista_rebut})
+def missatge_rebuts(request,oferta_disc_id):
+    disc=Oferta_disc.objects.get(id=oferta_disc_id)
+    llista_rebuts= disc.missatge_rebuts.all()
+    return render (request, 'missatges.html', {'llista_rebuts':llista_rebuts})
+
 
 
 #LOGEJAR-SE ------
@@ -115,7 +147,7 @@ def login(request):
 
             else:
                 messages.error(request,"Usuari o password incorrecte o usuari no actiu")
-                print "error"
+                
            
     else:
         form=LoginForm()

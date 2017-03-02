@@ -143,6 +143,7 @@ STATICFILES_DIRS = [
  
     ]
 
+
 MEDIA_ROOT = os.path.join(BASE_DIR, "pujades")
 MEDIA_URL = '/imatgespujades/'
 
@@ -167,3 +168,6 @@ SOCIAL_AUTH_TWITTER_SECRET = 'K8Tf55F7WhY1KB3Nf80mXu3s3KcMck86CLmsmUcoQ0atw4S5QF
 #SOCIAL_AUTH_FACEBOOK_KEY = ''
 #SOCIAL_AUTH_FACEBOOK_SECRET = ''
 
+#redirect del @login_required de la vista 'crear_missatge'
+from django.core.urlresolvers import reverse_lazy
+LOGIN_URL = reverse_lazy('usuaris:login')

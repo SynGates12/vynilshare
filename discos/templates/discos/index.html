@@ -113,10 +113,11 @@
                 <div class="titol" id="titol1"><a href="{% url "discos:vinil_informacio" disc.pk %}"><h6> {{ disc.titol }} </h6></a></div>
                 <div class="user">
                   <div class="img-user"><a href=""><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></div>
-                  <div class="name-user" ><a href=""><small> {{ disc.usuari_venedor.usuari }} </small></a></div>
+                  <div class="name-user" ><a href="{% url "discos:usuari_informacio" disc.usuari_venedor.id %}"><small> {{ disc.usuari_venedor.usuari }}</small></a></div>
                 </div>
              </div>
-             <button type="button" class="btn btn-success button1" data-toggle="modal" data-target="#contact">Contactar</button>
+             
+            <a href="{% url "usuaris:crear_missatge" disc.pk %}" class="btn btn-success" role="button">Contactar</a>
             </div>
         {% endfor %}  
           </div>
@@ -161,10 +162,8 @@
           <img src="/dist/images/chooser_nd.png" alt="Chooser Nd" class="img-responsive fooo creative" id="nd">
           
         </div>
-        
-        
-       
      </div>
+     
      {% if user.is_authenticated %}
      <div id="contact" class="modal fade" role="dialog">
                 <div class="modal-dialog">
